@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.7.32">
@@ -9,7 +8,7 @@
 
 
 <title>A Gradient Descent into Government Spending</title>
-<style class="anchorjs"></style><style>
+<style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -44,65 +43,27 @@ div.csl-indent {
 }</style>
 
 
-<script src="A%20Gradient%20Descent%20into%20Government%20Spending_files/clipboard.min.js"></script>
-<script src="A%20Gradient%20Descent%20into%20Government%20Spending_files/quarto.js" type="module"></script>
-<script src="A%20Gradient%20Descent%20into%20Government%20Spending_files/tabsets.js" type="module"></script>
-<script src="A%20Gradient%20Descent%20into%20Government%20Spending_files/popper.min.js"></script>
-<script src="A%20Gradient%20Descent%20into%20Government%20Spending_files/tippy.umd.min.js"></script>
-<script src="A%20Gradient%20Descent%20into%20Government%20Spending_files/anchor.min.js"></script>
-<link href="A%20Gradient%20Descent%20into%20Government%20Spending_files/tippy.css" rel="stylesheet">
-<link href="A%20Gradient%20Descent%20into%20Government%20Spending_files/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="https://wu-msds-capstones.github.io/project-writeup-rudy-edward-capstone/site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="disabled-stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="A%20Gradient%20Descent%20into%20Government%20Spending_files/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="disabled-stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="A%20Gradient%20Descent%20into%20Government%20Spending_files/bootstrap.min.js"></script>
-<link href="A%20Gradient%20Descent%20into%20Government%20Spending_files/bootstrap-icons.css" rel="stylesheet">
-<link href="A%20Gradient%20Descent%20into%20Government%20Spending_files/bootstrap-7743677462be8d8dc1a344ceaec86ef0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="https://wu-msds-capstones.github.io/project-writeup-rudy-edward-capstone/site_libs/bootstrap/bootstrap-dark-0d28f63e8dc0f4757ec17dab479fc92c.min.css" rel="disabled-stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="A%20Gradient%20Descent%20into%20Government%20Spending_files/bootstrap-7743677462be8d8dc1a344ceaec86ef0.min.css" rel="disabled-stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
-<script src="A%20Gradient%20Descent%20into%20Government%20Spending_files/glightbox.min.js"></script>
-<link href="A%20Gradient%20Descent%20into%20Government%20Spending_files/glightbox.min.css" rel="stylesheet">
-<link href="A%20Gradient%20Descent%20into%20Government%20Spending_files/lightbox.css" rel="stylesheet">
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-4232d8757afbb51e99ae1421690cc42a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-2dbaf53535e256ae20ad3d6984d0a04d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-4232d8757afbb51e99ae1421690cc42a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 
-  <script src="A%20Gradient%20Descent%20into%20Government%20Spending_files/polyfill.min.js"></script>
-  <script src="A%20Gradient%20Descent%20into%20Government%20Spending_files/tex-chtml-full.js" type="text/javascript"></script><style type="text/css">.CtxtMenu_InfoClose {  top:.2em; right:.2em;}
-.CtxtMenu_InfoContent {  overflow:auto; text-align:left; font-size:80%;  padding:.4em .6em; border:1px inset; margin:1em 0px;  max-height:20em; max-width:30em; background-color:#EEEEEE;  white-space:normal;}
-.CtxtMenu_Info.CtxtMenu_MousePost {outline:none;}
-.CtxtMenu_Info {  position:fixed; left:50%; width:auto; text-align:center;  border:3px outset; padding:1em 2em; background-color:#DDDDDD;  color:black;  cursor:default; font-family:message-box; font-size:120%;  font-style:normal; text-indent:0; text-transform:none;  line-height:normal; letter-spacing:normal; word-spacing:normal;  word-wrap:normal; white-space:nowrap; float:none; z-index:201;  border-radius: 15px;                     /* Opera 10.5 and IE9 */  -webkit-border-radius:15px;               /* Safari and Chrome */  -moz-border-radius:15px;                  /* Firefox */  -khtml-border-radius:15px;                /* Konqueror */  box-shadow:0px 10px 20px #808080;         /* Opera 10.5 and IE9 */  -webkit-box-shadow:0px 10px 20px #808080; /* Safari 3 & Chrome */  -moz-box-shadow:0px 10px 20px #808080;    /* Forefox 3.5 */  -khtml-box-shadow:0px 10px 20px #808080;  /* Konqueror */  filter:progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color="gray", Positive="true"); /* IE */}
-</style><style type="text/css">.CtxtMenu_MenuClose {  position:absolute;  cursor:pointer;  display:inline-block;  border:2px solid #AAA;  border-radius:18px;  -webkit-border-radius: 18px;             /* Safari and Chrome */  -moz-border-radius: 18px;                /* Firefox */  -khtml-border-radius: 18px;              /* Konqueror */  font-family: "Courier New", Courier;  font-size:24px;  color:#F0F0F0}
-.CtxtMenu_MenuClose span {  display:block; background-color:#AAA; border:1.5px solid;  border-radius:18px;  -webkit-border-radius: 18px;             /* Safari and Chrome */  -moz-border-radius: 18px;                /* Firefox */  -khtml-border-radius: 18px;              /* Konqueror */  line-height:0;  padding:8px 0 6px     /* may need to be browser-specific */}
-.CtxtMenu_MenuClose:hover {  color:white!important;  border:2px solid #CCC!important}
-.CtxtMenu_MenuClose:hover span {  background-color:#CCC!important}
-.CtxtMenu_MenuClose:hover:focus {  outline:none}
-</style><style type="text/css">.CtxtMenu_Menu {  position:absolute;  background-color:white;  color:black;  width:auto; padding:5px 0px;  border:1px solid #CCCCCC; margin:0; cursor:default;  font: menu; text-align:left; text-indent:0; text-transform:none;  line-height:normal; letter-spacing:normal; word-spacing:normal;  word-wrap:normal; white-space:nowrap; float:none; z-index:201;  border-radius: 5px;                     /* Opera 10.5 and IE9 */  -webkit-border-radius: 5px;             /* Safari and Chrome */  -moz-border-radius: 5px;                /* Firefox */  -khtml-border-radius: 5px;              /* Konqueror */  box-shadow:0px 10px 20px #808080;         /* Opera 10.5 and IE9 */  -webkit-box-shadow:0px 10px 20px #808080; /* Safari 3 & Chrome */  -moz-box-shadow:0px 10px 20px #808080;    /* Forefox 3.5 */  -khtml-box-shadow:0px 10px 20px #808080;  /* Konqueror */}
-.CtxtMenu_MenuItem {  padding: 1px 2em;  background:transparent;}
-.CtxtMenu_MenuArrow {  position:absolute; right:.5em; padding-top:.25em; color:#666666;  font-family: null; font-size: .75em}
-.CtxtMenu_MenuActive .CtxtMenu_MenuArrow {color:white}
-.CtxtMenu_MenuArrow.CtxtMenu_RTL {left:.5em; right:auto}
-.CtxtMenu_MenuCheck {  position:absolute; left:.7em;  font-family: null}
-.CtxtMenu_MenuCheck.CtxtMenu_RTL { right:.7em; left:auto }
-.CtxtMenu_MenuRadioCheck {  position:absolute; left: .7em;}
-.CtxtMenu_MenuRadioCheck.CtxtMenu_RTL {  right: .7em; left:auto}
-.CtxtMenu_MenuInputBox {  padding-left: 1em; right:.5em; color:#666666;  font-family: null;}
-.CtxtMenu_MenuInputBox.CtxtMenu_RTL {  left: .1em;}
-.CtxtMenu_MenuComboBox {  left:.1em; padding-bottom:.5em;}
-.CtxtMenu_MenuSlider {  left: .1em;}
-.CtxtMenu_SliderValue {  position:absolute; right:.1em; padding-top:.25em; color:#333333;  font-size: .75em}
-.CtxtMenu_SliderBar {  outline: none; background: #d3d3d3}
-.CtxtMenu_MenuLabel {  padding: 1px 2em 3px 1.33em;  font-style:italic}
-.CtxtMenu_MenuRule {  border-top: 1px solid #DDDDDD;  margin: 4px 3px;}
-.CtxtMenu_MenuDisabled {  color:GrayText}
-.CtxtMenu_MenuActive {  background-color: #606872;  color: white;}
-.CtxtMenu_MenuDisabled:focus {  background-color: #E8E8E8}
-.CtxtMenu_MenuLabel:focus {  background-color: #E8E8E8}
-.CtxtMenu_ContextMenu:focus {  outline:none}
-.CtxtMenu_ContextMenu .CtxtMenu_MenuItem:focus {  outline:none}
-.CtxtMenu_SelectionMenu {  position:relative; float:left;  border-bottom: none; -webkit-box-shadow:none; -webkit-border-radius:0px; }
-.CtxtMenu_SelectionItem {  padding-right: 1em;}
-.CtxtMenu_Selection {  right: 40%; width:50%; }
-.CtxtMenu_SelectionBox {  padding: 0em; max-height:20em; max-width: none;  background-color:#FFFFFF;}
-.CtxtMenu_SelectionDivider {  clear: both; border-top: 2px solid #000000;}
-.CtxtMenu_Menu .CtxtMenu_MenuClose {  top:-10px; left:-10px}
-</style>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -141,966 +102,7 @@ window.Quarto = {
 <meta name="citation_reference" content="citation_title=5 must-have metrics for value investors;,citation_author=Jonas Elmerraji;,citation_publication_date=2024;,citation_cover_date=2024;,citation_year=2024;,citation_fulltext_html_url=https://www.investopedia.com/articles/fundamental-analysis/09/five-must-have-metrics-value-investors.asp;">
 <meta name="citation_reference" content="citation_title=How active traders approach and track the market;,citation_author=Charles Schwab;,citation_publication_date=2024;,citation_cover_date=2024;,citation_year=2024;,citation_fulltext_html_url=https://www.schwab.com/learn/story/how-active-traders-approach-and-track-market;">
 <meta name="citation_reference" content="citation_title=XGBoost: A scalable tree boosting system.;,citation_author=Tiangi Chen;,citation_author=Carlos Guestrin;,citation_publication_date=2016-08;,citation_cover_date=2016-08;,citation_year=2016;,citation_fulltext_html_url=https://dl.acm.org/doi/10.1145/2939672.2939785;,citation_doi=10.1145/2939672.2939785;,citation_journal_title=Association for Computing Machinery;">
-<style id="MJX-CHTML-styles">
-mjx-container[jax="CHTML"] {
-  line-height: 0;
-}
-
-mjx-container [space="1"] {
-  margin-left: .111em;
-}
-
-mjx-container [space="2"] {
-  margin-left: .167em;
-}
-
-mjx-container [space="3"] {
-  margin-left: .222em;
-}
-
-mjx-container [space="4"] {
-  margin-left: .278em;
-}
-
-mjx-container [space="5"] {
-  margin-left: .333em;
-}
-
-mjx-container [rspace="1"] {
-  margin-right: .111em;
-}
-
-mjx-container [rspace="2"] {
-  margin-right: .167em;
-}
-
-mjx-container [rspace="3"] {
-  margin-right: .222em;
-}
-
-mjx-container [rspace="4"] {
-  margin-right: .278em;
-}
-
-mjx-container [rspace="5"] {
-  margin-right: .333em;
-}
-
-mjx-container [size="s"] {
-  font-size: 70.7%;
-}
-
-mjx-container [size="ss"] {
-  font-size: 50%;
-}
-
-mjx-container [size="Tn"] {
-  font-size: 60%;
-}
-
-mjx-container [size="sm"] {
-  font-size: 85%;
-}
-
-mjx-container [size="lg"] {
-  font-size: 120%;
-}
-
-mjx-container [size="Lg"] {
-  font-size: 144%;
-}
-
-mjx-container [size="LG"] {
-  font-size: 173%;
-}
-
-mjx-container [size="hg"] {
-  font-size: 207%;
-}
-
-mjx-container [size="HG"] {
-  font-size: 249%;
-}
-
-mjx-container [width="full"] {
-  width: 100%;
-}
-
-mjx-box {
-  display: inline-block;
-}
-
-mjx-block {
-  display: block;
-}
-
-mjx-itable {
-  display: inline-table;
-}
-
-mjx-row {
-  display: table-row;
-}
-
-mjx-row > * {
-  display: table-cell;
-}
-
-mjx-mtext {
-  display: inline-block;
-  text-align: left;
-}
-
-mjx-mstyle {
-  display: inline-block;
-}
-
-mjx-merror {
-  display: inline-block;
-  color: red;
-  background-color: yellow;
-}
-
-mjx-mphantom {
-  visibility: hidden;
-}
-
-_::-webkit-full-page-media, _:future, :root mjx-container {
-  will-change: opacity;
-}
-
-mjx-assistive-mml {
-  position: absolute !important;
-  top: 0px;
-  left: 0px;
-  clip: rect(1px, 1px, 1px, 1px);
-  padding: 1px 0px 0px 0px !important;
-  border: 0px !important;
-  display: block !important;
-  width: auto !important;
-  overflow: hidden !important;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-mjx-assistive-mml[display="block"] {
-  width: 100% !important;
-}
-
-mjx-math {
-  display: inline-block;
-  text-align: left;
-  line-height: 0;
-  text-indent: 0;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 100%;
-  font-size-adjust: none;
-  letter-spacing: normal;
-  border-collapse: collapse;
-  word-wrap: normal;
-  word-spacing: normal;
-  white-space: nowrap;
-  direction: ltr;
-  padding: 1px 0;
-}
-
-mjx-container[jax="CHTML"][display="true"] {
-  display: block;
-  text-align: center;
-  margin: 1em 0;
-}
-
-mjx-container[jax="CHTML"][display="true"][width="full"] {
-  display: flex;
-}
-
-mjx-container[jax="CHTML"][display="true"] mjx-math {
-  padding: 0;
-}
-
-mjx-container[jax="CHTML"][justify="left"] {
-  text-align: left;
-}
-
-mjx-container[jax="CHTML"][justify="right"] {
-  text-align: right;
-}
-
-mjx-mtable {
-  display: inline-block;
-  text-align: center;
-  vertical-align: .25em;
-  position: relative;
-  box-sizing: border-box;
-  border-spacing: 0;
-  border-collapse: collapse;
-}
-
-mjx-mstyle[size="s"] mjx-mtable {
-  vertical-align: .354em;
-}
-
-mjx-labels {
-  position: absolute;
-  left: 0;
-  top: 0;
-}
-
-mjx-table {
-  display: inline-block;
-  vertical-align: -.5ex;
-  box-sizing: border-box;
-}
-
-mjx-table > mjx-itable {
-  vertical-align: middle;
-  text-align: left;
-  box-sizing: border-box;
-}
-
-mjx-labels > mjx-itable {
-  position: absolute;
-  top: 0;
-}
-
-mjx-mtable[justify="left"] {
-  text-align: left;
-}
-
-mjx-mtable[justify="right"] {
-  text-align: right;
-}
-
-mjx-mtable[justify="left"][side="left"] {
-  padding-right: 0 ! important;
-}
-
-mjx-mtable[justify="left"][side="right"] {
-  padding-left: 0 ! important;
-}
-
-mjx-mtable[justify="right"][side="left"] {
-  padding-right: 0 ! important;
-}
-
-mjx-mtable[justify="right"][side="right"] {
-  padding-left: 0 ! important;
-}
-
-mjx-mtable[align] {
-  vertical-align: baseline;
-}
-
-mjx-mtable[align="top"] > mjx-table {
-  vertical-align: top;
-}
-
-mjx-mtable[align="bottom"] > mjx-table {
-  vertical-align: bottom;
-}
-
-mjx-mtable[side="right"] mjx-labels {
-  min-width: 100%;
-}
-
-mjx-mlabeledtr {
-  display: table-row;
-  text-align: left;
-}
-
-mjx-mlabeledtr[rowalign="top"] > mjx-mtd {
-  vertical-align: top;
-}
-
-mjx-mlabeledtr[rowalign="center"] > mjx-mtd {
-  vertical-align: middle;
-}
-
-mjx-mlabeledtr[rowalign="bottom"] > mjx-mtd {
-  vertical-align: bottom;
-}
-
-mjx-mlabeledtr[rowalign="baseline"] > mjx-mtd {
-  vertical-align: baseline;
-}
-
-mjx-mlabeledtr[rowalign="axis"] > mjx-mtd {
-  vertical-align: .25em;
-}
-
-mjx-mtr {
-  display: table-row;
-  text-align: left;
-}
-
-mjx-mtr[rowalign="top"] > mjx-mtd {
-  vertical-align: top;
-}
-
-mjx-mtr[rowalign="center"] > mjx-mtd {
-  vertical-align: middle;
-}
-
-mjx-mtr[rowalign="bottom"] > mjx-mtd {
-  vertical-align: bottom;
-}
-
-mjx-mtr[rowalign="baseline"] > mjx-mtd {
-  vertical-align: baseline;
-}
-
-mjx-mtr[rowalign="axis"] > mjx-mtd {
-  vertical-align: .25em;
-}
-
-mjx-mtd {
-  display: table-cell;
-  text-align: center;
-  padding: .215em .4em;
-}
-
-mjx-mtd:first-child {
-  padding-left: 0;
-}
-
-mjx-mtd:last-child {
-  padding-right: 0;
-}
-
-mjx-mtable > * > mjx-itable > *:first-child > mjx-mtd {
-  padding-top: 0;
-}
-
-mjx-mtable > * > mjx-itable > *:last-child > mjx-mtd {
-  padding-bottom: 0;
-}
-
-mjx-tstrut {
-  display: inline-block;
-  height: 1em;
-  vertical-align: -.25em;
-}
-
-mjx-labels[align="left"] > mjx-mtr > mjx-mtd {
-  text-align: left;
-}
-
-mjx-labels[align="right"] > mjx-mtr > mjx-mtd {
-  text-align: right;
-}
-
-mjx-mtd[extra] {
-  padding: 0;
-}
-
-mjx-mtd[rowalign="top"] {
-  vertical-align: top;
-}
-
-mjx-mtd[rowalign="center"] {
-  vertical-align: middle;
-}
-
-mjx-mtd[rowalign="bottom"] {
-  vertical-align: bottom;
-}
-
-mjx-mtd[rowalign="baseline"] {
-  vertical-align: baseline;
-}
-
-mjx-mtd[rowalign="axis"] {
-  vertical-align: .25em;
-}
-
-mjx-c {
-  display: inline-block;
-}
-
-mjx-utext {
-  display: inline-block;
-  padding: .75em 0 .2em 0;
-}
-
-mjx-mi {
-  display: inline-block;
-  text-align: left;
-}
-
-mjx-mo {
-  display: inline-block;
-  text-align: left;
-}
-
-mjx-stretchy-h {
-  display: inline-table;
-  width: 100%;
-}
-
-mjx-stretchy-h > * {
-  display: table-cell;
-  width: 0;
-}
-
-mjx-stretchy-h > * > mjx-c {
-  display: inline-block;
-  transform: scalex(1.0000001);
-}
-
-mjx-stretchy-h > * > mjx-c::before {
-  display: inline-block;
-  width: initial;
-}
-
-mjx-stretchy-h > mjx-ext {
-  /* IE */ overflow: hidden;
-  /* others */ overflow: clip visible;
-  width: 100%;
-}
-
-mjx-stretchy-h > mjx-ext > mjx-c::before {
-  transform: scalex(500);
-}
-
-mjx-stretchy-h > mjx-ext > mjx-c {
-  width: 0;
-}
-
-mjx-stretchy-h > mjx-beg > mjx-c {
-  margin-right: -.1em;
-}
-
-mjx-stretchy-h > mjx-end > mjx-c {
-  margin-left: -.1em;
-}
-
-mjx-stretchy-v {
-  display: inline-block;
-}
-
-mjx-stretchy-v > * {
-  display: block;
-}
-
-mjx-stretchy-v > mjx-beg {
-  height: 0;
-}
-
-mjx-stretchy-v > mjx-end > mjx-c {
-  display: block;
-}
-
-mjx-stretchy-v > * > mjx-c {
-  transform: scaley(1.0000001);
-  transform-origin: left center;
-  overflow: hidden;
-}
-
-mjx-stretchy-v > mjx-ext {
-  display: block;
-  height: 100%;
-  box-sizing: border-box;
-  border: 0px solid transparent;
-  /* IE */ overflow: hidden;
-  /* others */ overflow: visible clip;
-}
-
-mjx-stretchy-v > mjx-ext > mjx-c::before {
-  width: initial;
-  box-sizing: border-box;
-}
-
-mjx-stretchy-v > mjx-ext > mjx-c {
-  transform: scaleY(500) translateY(.075em);
-  overflow: visible;
-}
-
-mjx-mark {
-  display: inline-block;
-  height: 0px;
-}
-
-mjx-mfrac {
-  display: inline-block;
-  text-align: left;
-}
-
-mjx-frac {
-  display: inline-block;
-  vertical-align: 0.17em;
-  padding: 0 .22em;
-}
-
-mjx-frac[type="d"] {
-  vertical-align: .04em;
-}
-
-mjx-frac[delims] {
-  padding: 0 .1em;
-}
-
-mjx-frac[atop] {
-  padding: 0 .12em;
-}
-
-mjx-frac[atop][delims] {
-  padding: 0;
-}
-
-mjx-dtable {
-  display: inline-table;
-  width: 100%;
-}
-
-mjx-dtable > * {
-  font-size: 2000%;
-}
-
-mjx-dbox {
-  display: block;
-  font-size: 5%;
-}
-
-mjx-num {
-  display: block;
-  text-align: center;
-}
-
-mjx-den {
-  display: block;
-  text-align: center;
-}
-
-mjx-mfrac[bevelled] > mjx-num {
-  display: inline-block;
-}
-
-mjx-mfrac[bevelled] > mjx-den {
-  display: inline-block;
-}
-
-mjx-den[align="right"], mjx-num[align="right"] {
-  text-align: right;
-}
-
-mjx-den[align="left"], mjx-num[align="left"] {
-  text-align: left;
-}
-
-mjx-nstrut {
-  display: inline-block;
-  height: .054em;
-  width: 0;
-  vertical-align: -.054em;
-}
-
-mjx-nstrut[type="d"] {
-  height: .217em;
-  vertical-align: -.217em;
-}
-
-mjx-dstrut {
-  display: inline-block;
-  height: .505em;
-  width: 0;
-}
-
-mjx-dstrut[type="d"] {
-  height: .726em;
-}
-
-mjx-line {
-  display: block;
-  box-sizing: border-box;
-  min-height: 1px;
-  height: .06em;
-  border-top: .06em solid;
-  margin: .06em -.1em;
-  overflow: hidden;
-}
-
-mjx-line[type="d"] {
-  margin: .18em -.1em;
-}
-
-mjx-c::before {
-  display: block;
-  width: 0;
-}
-
-.MJX-TEX {
-  font-family: MJXZERO, MJXTEX;
-}
-
-.TEX-B {
-  font-family: MJXZERO, MJXTEX-B;
-}
-
-.TEX-I {
-  font-family: MJXZERO, MJXTEX-I;
-}
-
-.TEX-MI {
-  font-family: MJXZERO, MJXTEX-MI;
-}
-
-.TEX-BI {
-  font-family: MJXZERO, MJXTEX-BI;
-}
-
-.TEX-S1 {
-  font-family: MJXZERO, MJXTEX-S1;
-}
-
-.TEX-S2 {
-  font-family: MJXZERO, MJXTEX-S2;
-}
-
-.TEX-S3 {
-  font-family: MJXZERO, MJXTEX-S3;
-}
-
-.TEX-S4 {
-  font-family: MJXZERO, MJXTEX-S4;
-}
-
-.TEX-A {
-  font-family: MJXZERO, MJXTEX-A;
-}
-
-.TEX-C {
-  font-family: MJXZERO, MJXTEX-C;
-}
-
-.TEX-CB {
-  font-family: MJXZERO, MJXTEX-CB;
-}
-
-.TEX-FR {
-  font-family: MJXZERO, MJXTEX-FR;
-}
-
-.TEX-FRB {
-  font-family: MJXZERO, MJXTEX-FRB;
-}
-
-.TEX-SS {
-  font-family: MJXZERO, MJXTEX-SS;
-}
-
-.TEX-SSB {
-  font-family: MJXZERO, MJXTEX-SSB;
-}
-
-.TEX-SSI {
-  font-family: MJXZERO, MJXTEX-SSI;
-}
-
-.TEX-SC {
-  font-family: MJXZERO, MJXTEX-SC;
-}
-
-.TEX-T {
-  font-family: MJXZERO, MJXTEX-T;
-}
-
-.TEX-V {
-  font-family: MJXZERO, MJXTEX-V;
-}
-
-.TEX-VB {
-  font-family: MJXZERO, MJXTEX-VB;
-}
-
-mjx-stretchy-v mjx-c, mjx-stretchy-h mjx-c {
-  font-family: MJXZERO, MJXTEX-S1, MJXTEX-S4, MJXTEX, MJXTEX-A ! important;
-}
-
-@font-face /* 0 */ {
-  font-family: MJXZERO;
-  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Zero.woff") format("woff");
-}
-
-@font-face /* 1 */ {
-  font-family: MJXTEX;
-  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Main-Regular.woff") format("woff");
-}
-
-@font-face /* 2 */ {
-  font-family: MJXTEX-B;
-  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Main-Bold.woff") format("woff");
-}
-
-@font-face /* 3 */ {
-  font-family: MJXTEX-I;
-  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Math-Italic.woff") format("woff");
-}
-
-@font-face /* 4 */ {
-  font-family: MJXTEX-MI;
-  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Main-Italic.woff") format("woff");
-}
-
-@font-face /* 5 */ {
-  font-family: MJXTEX-BI;
-  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Math-BoldItalic.woff") format("woff");
-}
-
-@font-face /* 6 */ {
-  font-family: MJXTEX-S1;
-  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Size1-Regular.woff") format("woff");
-}
-
-@font-face /* 7 */ {
-  font-family: MJXTEX-S2;
-  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Size2-Regular.woff") format("woff");
-}
-
-@font-face /* 8 */ {
-  font-family: MJXTEX-S3;
-  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Size3-Regular.woff") format("woff");
-}
-
-@font-face /* 9 */ {
-  font-family: MJXTEX-S4;
-  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Size4-Regular.woff") format("woff");
-}
-
-@font-face /* 10 */ {
-  font-family: MJXTEX-A;
-  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_AMS-Regular.woff") format("woff");
-}
-
-@font-face /* 11 */ {
-  font-family: MJXTEX-C;
-  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Calligraphic-Regular.woff") format("woff");
-}
-
-@font-face /* 12 */ {
-  font-family: MJXTEX-CB;
-  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Calligraphic-Bold.woff") format("woff");
-}
-
-@font-face /* 13 */ {
-  font-family: MJXTEX-FR;
-  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Fraktur-Regular.woff") format("woff");
-}
-
-@font-face /* 14 */ {
-  font-family: MJXTEX-FRB;
-  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Fraktur-Bold.woff") format("woff");
-}
-
-@font-face /* 15 */ {
-  font-family: MJXTEX-SS;
-  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_SansSerif-Regular.woff") format("woff");
-}
-
-@font-face /* 16 */ {
-  font-family: MJXTEX-SSB;
-  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_SansSerif-Bold.woff") format("woff");
-}
-
-@font-face /* 17 */ {
-  font-family: MJXTEX-SSI;
-  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_SansSerif-Italic.woff") format("woff");
-}
-
-@font-face /* 18 */ {
-  font-family: MJXTEX-SC;
-  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Script-Regular.woff") format("woff");
-}
-
-@font-face /* 19 */ {
-  font-family: MJXTEX-T;
-  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Typewriter-Regular.woff") format("woff");
-}
-
-@font-face /* 20 */ {
-  font-family: MJXTEX-V;
-  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Vector-Regular.woff") format("woff");
-}
-
-@font-face /* 21 */ {
-  font-family: MJXTEX-VB;
-  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Vector-Bold.woff") format("woff");
-}
-
-mjx-c.mjx-c28::before {
-  padding: 0.75em 0.389em 0.25em 0;
-  content: "(";
-}
-
-mjx-c.mjx-c31::before {
-  padding: 0.666em 0.5em 0 0;
-  content: "1";
-}
-
-mjx-c.mjx-c29::before {
-  padding: 0.75em 0.389em 0.25em 0;
-  content: ")";
-}
-
-mjx-c.mjx-c50::before {
-  padding: 0.683em 0.681em 0 0;
-  content: "P";
-}
-
-mjx-c.mjx-c72::before {
-  padding: 0.442em 0.392em 0 0;
-  content: "r";
-}
-
-mjx-c.mjx-c6F::before {
-  padding: 0.448em 0.5em 0.01em 0;
-  content: "o";
-}
-
-mjx-c.mjx-c66::before {
-  padding: 0.705em 0.372em 0 0;
-  content: "f";
-}
-
-mjx-c.mjx-c69::before {
-  padding: 0.669em 0.278em 0 0;
-  content: "i";
-}
-
-mjx-c.mjx-c74::before {
-  padding: 0.615em 0.389em 0.01em 0;
-  content: "t";
-}
-
-mjx-c.mjx-c3D::before {
-  padding: 0.583em 0.778em 0.082em 0;
-  content: "=";
-}
-
-mjx-c.mjx-c52::before {
-  padding: 0.683em 0.736em 0.022em 0;
-  content: "R";
-}
-
-mjx-c.mjx-c65::before {
-  padding: 0.448em 0.444em 0.011em 0;
-  content: "e";
-}
-
-mjx-c.mjx-c76::before {
-  padding: 0.431em 0.528em 0.011em 0;
-  content: "v";
-}
-
-mjx-c.mjx-c6E::before {
-  padding: 0.442em 0.556em 0 0;
-  content: "n";
-}
-
-mjx-c.mjx-c75::before {
-  padding: 0.442em 0.556em 0.011em 0;
-  content: "u";
-}
-
-mjx-c.mjx-c20::before {
-  padding: 0 0.25em 0 0;
-  content: " ";
-}
-
-mjx-c.mjx-c2D::before {
-  padding: 0.252em 0.333em 0 0;
-  content: "-";
-}
-
-mjx-c.mjx-c45::before {
-  padding: 0.68em 0.681em 0 0;
-  content: "E";
-}
-
-mjx-c.mjx-c78::before {
-  padding: 0.431em 0.528em 0 0;
-  content: "x";
-}
-
-mjx-c.mjx-c70::before {
-  padding: 0.442em 0.556em 0.194em 0;
-  content: "p";
-}
-
-mjx-c.mjx-c73::before {
-  padding: 0.448em 0.394em 0.011em 0;
-  content: "s";
-}
-
-mjx-c.mjx-c32::before {
-  padding: 0.666em 0.5em 0 0;
-  content: "2";
-}
-
-mjx-c.mjx-c61::before {
-  padding: 0.448em 0.5em 0.011em 0;
-  content: "a";
-}
-
-mjx-c.mjx-c67::before {
-  padding: 0.453em 0.5em 0.206em 0;
-  content: "g";
-}
-
-mjx-c.mjx-c53::before {
-  padding: 0.705em 0.556em 0.022em 0;
-  content: "S";
-}
-
-mjx-c.mjx-c68::before {
-  padding: 0.694em 0.556em 0 0;
-  content: "h";
-}
-
-mjx-c.mjx-c4F::before {
-  padding: 0.705em 0.778em 0.022em 0;
-  content: "O";
-}
-
-mjx-c.mjx-c64::before {
-  padding: 0.694em 0.556em 0.011em 0;
-  content: "d";
-}
-
-mjx-c.mjx-c33::before {
-  padding: 0.665em 0.5em 0.022em 0;
-  content: "3";
-}
-
-mjx-c.mjx-c4D::before {
-  padding: 0.683em 0.917em 0 0;
-  content: "M";
-}
-
-mjx-c.mjx-c6B::before {
-  padding: 0.694em 0.528em 0 0;
-  content: "k";
-}
-
-mjx-c.mjx-c43::before {
-  padding: 0.705em 0.722em 0.021em 0;
-  content: "C";
-}
-
-mjx-c.mjx-c63::before {
-  padding: 0.448em 0.444em 0.011em 0;
-  content: "c";
-}
-
-mjx-c.mjx-cD7::before {
-  padding: 0.491em 0.778em 0 0;
-  content: "\D7";
-}
-</style></head>
+</head>
 
 <body class="quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
@@ -1270,9 +272,7 @@ mjx-c.mjx-cD7::before {
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
       <h1 class="title">A Gradient Descent into Government Spending</h1>
-            <p class="subtitle lead">How is a public company’s 
-short-term stock price influenced by Government Contract Activity, 
-starting market cap, and financial sector?</p>
+            <p class="subtitle lead">How is a public company’s short-term stock price influenced by Government Contract Activity, starting market cap, and financial sector?</p>
           </div>
 
     
@@ -1307,9 +307,9 @@ starting market cap, and financial sector?</p>
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction"><span class="header-section-number">1</span> Introduction</a>
-  <ul class="">
-  <li><a href="#value-for-the-american-people" id="toc-value-for-the-american-people" class="nav-link active" data-scroll-target="#value-for-the-american-people"><span class="header-section-number">1.1</span> Value for the American People</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">1</span> Introduction</a>
+  <ul class="collapse">
+  <li><a href="#value-for-the-american-people" id="toc-value-for-the-american-people" class="nav-link" data-scroll-target="#value-for-the-american-people"><span class="header-section-number">1.1</span> Value for the American People</a></li>
   <li><a href="#navigating-mistrust" id="toc-navigating-mistrust" class="nav-link" data-scroll-target="#navigating-mistrust"><span class="header-section-number">1.2</span> Navigating Mistrust</a></li>
   <li><a href="#leveling-the-playing-field" id="toc-leveling-the-playing-field" class="nav-link" data-scroll-target="#leveling-the-playing-field"><span class="header-section-number">1.3</span> Leveling the Playing Field</a></li>
   </ul></li>
@@ -1385,261 +385,124 @@ starting market cap, and financial sector?</p>
 
 <section id="introduction" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Introduction</h1>
-<p>Government contracts can move markets - but how much? The link 
-between government contracts and the stock market is not always 
-apparent, however, there are some indicators that suggest that one my 
-have an effect on the other. Our object will be to explore these 
-indicators and develop a tool that can be used by the general 
-population, not just those who are deeply familiar with the stock 
-market. To begin, it’s important to understand the factors that create a
- need for this type of analysis.</p>
+<p>Government contracts can move markets - but how much? The link between government contracts and the stock market is not always apparent, however, there are some indicators that suggest that one my have an effect on the other. Our object will be to explore these indicators and develop a tool that can be used by the general population, not just those who are deeply familiar with the stock market. To begin, it’s important to understand the factors that create a need for this type of analysis.</p>
 <section id="value-for-the-american-people" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="value-for-the-american-people"><span class="header-section-number">1.1</span> Value for the American People<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#value-for-the-american-people" style="font: 1em / 1 anchorjs-icons; margin-left: 0.1875em; padding-right: 0.1875em; padding-left: 0.1875em;"></a></h2>
-<p>Now, more than ever, voters in the United States are paying attention
- to how the government uses its funds. Ninety-eight percent of Americans
- believe there is at least some waste, fraud, and abuse in federal 
-government, and seventy-six percent of surveyed Americans believe the 
-government spends too much money <span class="citation" data-cites="Ekins2025">(<a href="#ref-Ekins2025" role="doc-biblioref" aria-expanded="false">Ekins and Johnson 2025</a>)</span>.
- During the 2024 presidential election, much of the rhetoric used in 
-campaign efforts was geared towards addressing Americans’ concerns 
-surrounding perceived overspending by the federal government.</p>
+<h2 data-number="1.1" class="anchored" data-anchor-id="value-for-the-american-people"><span class="header-section-number">1.1</span> Value for the American People</h2>
+<p>Now, more than ever, voters in the United States are paying attention to how the government uses its funds. Ninety-eight percent of Americans believe there is at least some waste, fraud, and abuse in federal government, and seventy-six percent of surveyed Americans believe the government spends too much money <span class="citation" data-cites="Ekins2025">(<a href="#ref-Ekins2025" role="doc-biblioref">Ekins and Johnson 2025</a>)</span>. During the 2024 presidential election, much of the rhetoric used in campaign efforts was geared towards addressing Americans’ concerns surrounding perceived overspending by the federal government.</p>
 </section>
 <section id="navigating-mistrust" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="navigating-mistrust"><span class="header-section-number">1.2</span> Navigating Mistrust<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#navigating-mistrust" style="font: 1em / 1 anchorjs-icons; margin-left: 0.1875em; padding-right: 0.1875em; padding-left: 0.1875em;"></a></h2>
-<p>Mistrust in the U.S. government can also lead to suspicions of 
-corruption by those who wield access to privileged information. Various 
-sites have been created to closely monitor politicians’ public stock 
-trades with the goal of exposing corrupt practices like insider trading.
- Insider trading is the act of buying, selling, or holding stock market 
-positions based on non public information. Politicians commonly 
-associated with insider trading include Nancy Pelosi (fmr. D-CA) and 
-Marjorie Taylor Greene (R-GA), although neither have had legal charges 
-brought. Insider information includes upcoming unannounced legislation 
-(which could benefit certain industries) and undisclosed selection 
-decisions for awarding government contracts, which will be the focus of 
-this analysis.</p>
-<p>While some argue that politicians should not be allowed to trade in 
-the stock market due to potential advanced knowledge of the information 
-mentioned here, such policies are not currently enacted. Proving a 
-politician committed insider trading could be tricky due to the various 
-methods of occulting such practices (shell companies, third party 
-entities), and the wide timeframe required to disclose financial events.</p>
+<h2 data-number="1.2" class="anchored" data-anchor-id="navigating-mistrust"><span class="header-section-number">1.2</span> Navigating Mistrust</h2>
+<p>Mistrust in the U.S. government can also lead to suspicions of corruption by those who wield access to privileged information. Various sites have been created to closely monitor politicians’ public stock trades with the goal of exposing corrupt practices like insider trading. Insider trading is the act of buying, selling, or holding stock market positions based on non public information. Politicians commonly associated with insider trading include Nancy Pelosi (fmr. D-CA) and Marjorie Taylor Greene (R-GA), although neither have had legal charges brought. Insider information includes upcoming unannounced legislation (which could benefit certain industries) and undisclosed selection decisions for awarding government contracts, which will be the focus of this analysis.</p>
+<p>While some argue that politicians should not be allowed to trade in the stock market due to potential advanced knowledge of the information mentioned here, such policies are not currently enacted. Proving a politician committed insider trading could be tricky due to the various methods of occulting such practices (shell companies, third party entities), and the wide timeframe required to disclose financial events.</p>
 </section>
 <section id="leveling-the-playing-field" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="leveling-the-playing-field"><span class="header-section-number">1.3</span> Leveling the Playing Field<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#leveling-the-playing-field" style="font: 1em / 1 anchorjs-icons; margin-left: 0.1875em; padding-right: 0.1875em; padding-left: 0.1875em;"></a></h2>
-<p>Investing in government-supported companies should not be considered 
-nefarious, however, the unfair advantage given to insiders is. 
-Government contract data are publicly disclosed, yet most Americans 
-likely do not know how to access them to make an informed investing 
-decision. Our work and analysis is aimed at creating a tool to enable 
-Americans to optimize their benefit from government spending, using 
-publicly-available information.</p>
-<p>In this report, we detail our exploration into what relationships may
- exist between a company being awarded a government contract and a 
-company’s stock price. We construct a pipeline to extract government 
-contract data directly from the federal government, company information 
-from the stock exchange, and stock price data from a reputable stock 
-market outlet. Using Python, we cleaned the data and prepared it for 
-induction into our Postgres database. With our final extracted data, we 
-created key features by leveraging our combined domain knowledge of the 
-stock market. After converging on the use of an XGBoost (eXtreme 
-Gradient Boost) algorithm, we used our created features to train and 
-test a machine learning model. Our model tells us that the stock price 
-reacts most to Sustained Momentum (60 day average price change) Two-Week
- Momentum (10 day average price change) and Day of the Week the contract
- was awarded. We discuss the specific ethical considerations we used to 
-design our project, such as maintaining user privacy and limiting bias 
-in our analysis.</p>
+<h2 data-number="1.3" class="anchored" data-anchor-id="leveling-the-playing-field"><span class="header-section-number">1.3</span> Leveling the Playing Field</h2>
+<p>Investing in government-supported companies should not be considered nefarious, however, the unfair advantage given to insiders is. Government contract data are publicly disclosed, yet most Americans likely do not know how to access them to make an informed investing decision. Our work and analysis is aimed at creating a tool to enable Americans to optimize their benefit from government spending, using publicly-available information.</p>
+<p>In this report, we detail our exploration into what relationships may exist between a company being awarded a government contract and a company’s stock price. We construct a pipeline to extract government contract data directly from the federal government, company information from the stock exchange, and stock price data from a reputable stock market outlet. Using Python, we cleaned the data and prepared it for induction into our Postgres database. With our final extracted data, we created key features by leveraging our combined domain knowledge of the stock market. After converging on the use of an XGBoost (eXtreme Gradient Boost) algorithm, we used our created features to train and test a machine learning model. Our model tells us that the stock price reacts most to Sustained Momentum (60 day average price change) Two-Week Momentum (10 day average price change) and Day of the Week the contract was awarded. We discuss the specific ethical considerations we used to design our project, such as maintaining user privacy and limiting bias in our analysis.</p>
 </section>
 </section>
 <section id="background" class="level1" data-number="2">
 <h1 data-number="2"><span class="header-section-number">2</span> Background</h1>
-<p>Understanding the stock market is not always intuitive. In the 
-financial industry, many concepts and metrics are referred to by their 
-short-hand notation, which can make it difficult for a newcomer to know 
-what is being conveyed. In addition, some terms are mathematically 
-derived, but not typically explained. Before we dive into our detailed 
-analysis, we’ll begin by outlining some key concepts related to features
- we analyzed. Some features involve calculations between earnings per 
-share (EPS), while other features (10 day average price change) are 
-aggregations of stock indicators like opening and closing stock price.</p>
+<p>Understanding the stock market is not always intuitive. In the financial industry, many concepts and metrics are referred to by their short-hand notation, which can make it difficult for a newcomer to know what is being conveyed. In addition, some terms are mathematically derived, but not typically explained. Before we dive into our detailed analysis, we’ll begin by outlining some key concepts related to features we analyzed. Some features involve calculations between earnings per share (EPS), while other features (10 day average price change) are aggregations of stock indicators like opening and closing stock price.</p>
 <section id="what-makes-a-market" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="what-makes-a-market"><span class="header-section-number">2.1</span> What Makes a Market?<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#what-makes-a-market" style="font: 1em / 1 anchorjs-icons; margin-left: 0.1875em; padding-right: 0.1875em; padding-left: 0.1875em;"></a></h2>
-<p>We gathered our data from the Nasdaq stock exchange and pulled stock 
-price information to calculate specific features. Here, we will cover 
-some concepts about the stock market. Let’s start by discussing how the 
-stock market is made up of individual companies and then lead into 
-pricing. We will end by briefly touching on a company’s financial 
-sector.</p>
-<p>Generally a company is considered either private or public - each 
-designation comes with positive and negative implications. Public 
-companies must file certain financial disclosures with the Securities 
-and Exchange Commission (SEC), a governmental organization tasked with 
-regulating market trading. Private companies are not required to file 
-such disclosures with SEC. Private companies typically amass funding via
- private investors, while public companies are able to trade portions of
- equity for money on market infrastructure known as an “exchange” and 
-broadly referred to as the stock market. The stock market behaves 
-similar to other financial institutions in the sense that the market 
-opens and closes at a set hour each day, and is closed on all major 
-holidays. Every morning, each company’s price is published, known as the
- opening price (or simply “open”) and each evening, the closing price 
-(“close”) is published. Trading can happen at any time after closing and
- is referred to as “after-hours trading” and can cause the stock price 
-to change since the time it closed the previous day.</p>
-<p>Company’s are categorized by their financial sector. Some common 
-sectors include; Health Care; Materials; Energy; Financials; Real 
-Estate; and others. The financial sector is based on the goods or 
-services that company provides.</p>
+<h2 data-number="2.1" class="anchored" data-anchor-id="what-makes-a-market"><span class="header-section-number">2.1</span> What Makes a Market?</h2>
+<p>We gathered our data from the Nasdaq stock exchange and pulled stock price information to calculate specific features. Here, we will cover some concepts about the stock market. Let’s start by discussing how the stock market is made up of individual companies and then lead into pricing. We will end by briefly touching on a company’s financial sector.</p>
+<p>Generally a company is considered either private or public - each designation comes with positive and negative implications. Public companies must file certain financial disclosures with the Securities and Exchange Commission (SEC), a governmental organization tasked with regulating market trading. Private companies are not required to file such disclosures with SEC. Private companies typically amass funding via private investors, while public companies are able to trade portions of equity for money on market infrastructure known as an “exchange” and broadly referred to as the stock market. The stock market behaves similar to other financial institutions in the sense that the market opens and closes at a set hour each day, and is closed on all major holidays. Every morning, each company’s price is published, known as the opening price (or simply “open”) and each evening, the closing price (“close”) is published. Trading can happen at any time after closing and is referred to as “after-hours trading” and can cause the stock price to change since the time it closed the previous day.</p>
+<p>Company’s are categorized by their financial sector. Some common sectors include; Health Care; Materials; Energy; Financials; Real Estate; and others. The financial sector is based on the goods or services that company provides.</p>
 </section>
 <section id="predicting-prices" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="predicting-prices"><span class="header-section-number">2.2</span> Predicting Prices<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#predicting-prices" style="font: 1em / 1 anchorjs-icons; margin-left: 0.1875em; padding-right: 0.1875em; padding-left: 0.1875em;"></a></h2>
-<p>Some features in our analysis are results of calculating other 
-metrics, for example: Contract ÷ Market Cap and 5-day average. Other 
-features included in this project make references to Earnings Calls, 
-which we will discuss next.</p>
-<p>Just about anybody with a phone, internet connection, and money can 
-become an investor in the stock market. When deciding which stock to 
-purchase, investors rely on key information <em>specific to each company</em>.</p>
-<p>One metric is the Earnings per Share (EPS), which is calculated by 
-dividing that company’s profits (over a set period of time) by the 
-number of shares that are available to purchase, also known as <em>outstanding shares</em>.</p>
-<p><span id="eq-poisson"><span class="math display"><mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" style="font-size: 102.7%; min-width: 16.574em; position: relative;" display="true" width="full" tabindex="0" ctxtmenu_counter="0"><mjx-math width="full" display="true" class="MJX-TEX" aria-hidden="true"><mjx-mtable width="full" style="min-width: 16.574em;" side="right"><mjx-table style="width: auto; min-width: 12.418em; margin: 0px 2.078em;"><mjx-itable width="full"><mjx-mlabeledtr><mjx-mtd><mjx-mtable style="min-width: 12.418em;"><mjx-table><mjx-itable><mjx-mtr><mjx-mtd style="text-align: right; padding-right: 0px;"><mjx-mtext class="mjx-n"><mjx-c class="mjx-c50"></mjx-c><mjx-c class="mjx-c72"></mjx-c><mjx-c class="mjx-c6F"></mjx-c><mjx-c class="mjx-c66"></mjx-c><mjx-c class="mjx-c69"></mjx-c><mjx-c class="mjx-c74"></mjx-c></mjx-mtext><mjx-tstrut></mjx-tstrut></mjx-mtd><mjx-mtd style="text-align: left; padding-left: 0px;"><mjx-mi class="mjx-n"></mjx-mi><mjx-mo class="mjx-n" space="4"><mjx-c class="mjx-c3D"></mjx-c></mjx-mo><mjx-mtext class="mjx-n" space="4"><mjx-c class="mjx-c52"></mjx-c><mjx-c class="mjx-c65"></mjx-c><mjx-c class="mjx-c76"></mjx-c><mjx-c class="mjx-c65"></mjx-c><mjx-c class="mjx-c6E"></mjx-c><mjx-c class="mjx-c75"></mjx-c><mjx-c class="mjx-c65"></mjx-c><mjx-c class="mjx-c20"></mjx-c><mjx-c class="mjx-c2D"></mjx-c><mjx-c class="mjx-c20"></mjx-c><mjx-c class="mjx-c45"></mjx-c><mjx-c class="mjx-c78"></mjx-c><mjx-c class="mjx-c70"></mjx-c><mjx-c class="mjx-c65"></mjx-c><mjx-c class="mjx-c6E"></mjx-c><mjx-c class="mjx-c73"></mjx-c><mjx-c class="mjx-c65"></mjx-c><mjx-c class="mjx-c73"></mjx-c></mjx-mtext><mjx-tstrut></mjx-tstrut></mjx-mtd></mjx-mtr></mjx-itable></mjx-table></mjx-mtable><mjx-tstrut></mjx-tstrut></mjx-mtd></mjx-mlabeledtr></mjx-itable></mjx-table><mjx-labels style="width: 16.574em;"><mjx-itable align="right" style="right: 0px;"><mjx-mtr style="height: 1em;"><mjx-mtd id="mjx-eqn:1"><mjx-mtext class="mjx-n"><mjx-c class="mjx-c28"></mjx-c><mjx-c class="mjx-c31"></mjx-c><mjx-c class="mjx-c29"></mjx-c></mjx-mtext><mjx-tstrut style="height: 1em; vertical-align: -0.25em;"></mjx-tstrut></mjx-mtd></mjx-mtr></mjx-itable></mjx-labels></mjx-mtable></mjx-math><mjx-assistive-mml unselectable="on" display="block"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mtable displaystyle="true"><mlabeledtr><mtd><mtext>(1)</mtext></mtd><mtd><mtable displaystyle="true" columnalign="right left" columnspacing="0em" rowspacing="3pt"><mtr><mtd><mtext>Profit</mtext></mtd><mtd><mi></mi><mo>=</mo><mtext>Revenue - Expenses</mtext></mtd></mtr></mtable></mtd></mlabeledtr></mtable></math></mjx-assistive-mml></mjx-container></span></span></p>
-<p>The timeframe can be any length of time, but generally is calculated 
-each quarter and discussed at the company’s Earnings Call. 
-Publicly-traded companies typically hold <strong>Earnings Calls</strong> where their representatives share the company’s financial outcomes for the previous quarter.</p>
-<p><span id="eq-poisson"><span class="math display"><mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" style="font-size: 102.7%; min-width: 22.671em; position: relative;" display="true" width="full" tabindex="0" ctxtmenu_counter="1"><mjx-math width="full" display="true" class="MJX-TEX" aria-hidden="true"><mjx-mtable width="full" style="min-width: 22.671em;" side="right"><mjx-table style="width: auto; min-width: 18.515em; margin: 0px 2.078em;"><mjx-itable width="full"><mjx-mlabeledtr><mjx-mtd><mjx-mtable style="min-width: 18.515em;"><mjx-table><mjx-itable><mjx-mtr><mjx-mtd style="text-align: right; padding-right: 0px;"><mjx-mtext class="mjx-n"><mjx-c class="mjx-c45"></mjx-c><mjx-c class="mjx-c61"></mjx-c><mjx-c class="mjx-c72"></mjx-c><mjx-c class="mjx-c6E"></mjx-c><mjx-c class="mjx-c69"></mjx-c><mjx-c class="mjx-c6E"></mjx-c><mjx-c class="mjx-c67"></mjx-c><mjx-c class="mjx-c73"></mjx-c><mjx-c class="mjx-c20"></mjx-c><mjx-c class="mjx-c70"></mjx-c><mjx-c class="mjx-c65"></mjx-c><mjx-c class="mjx-c72"></mjx-c><mjx-c class="mjx-c20"></mjx-c><mjx-c class="mjx-c53"></mjx-c><mjx-c class="mjx-c68"></mjx-c><mjx-c class="mjx-c61"></mjx-c><mjx-c class="mjx-c72"></mjx-c><mjx-c class="mjx-c65"></mjx-c></mjx-mtext><mjx-tstrut></mjx-tstrut></mjx-mtd><mjx-mtd style="text-align: left; padding-left: 0px;"><mjx-mi class="mjx-n"></mjx-mi><mjx-mo class="mjx-n" space="4"><mjx-c class="mjx-c3D"></mjx-c></mjx-mo><mjx-mfrac space="4"><mjx-frac type="d"><mjx-num><mjx-nstrut type="d"></mjx-nstrut><mjx-mtext class="mjx-n"><mjx-c class="mjx-c50"></mjx-c><mjx-c class="mjx-c72"></mjx-c><mjx-c class="mjx-c6F"></mjx-c><mjx-c class="mjx-c66"></mjx-c><mjx-c class="mjx-c69"></mjx-c><mjx-c class="mjx-c74"></mjx-c><mjx-c class="mjx-c73"></mjx-c></mjx-mtext></mjx-num><mjx-dbox><mjx-dtable><mjx-line type="d"></mjx-line><mjx-row><mjx-den><mjx-dstrut type="d"></mjx-dstrut><mjx-mtext class="mjx-n"><mjx-c class="mjx-c4F"></mjx-c><mjx-c class="mjx-c75"></mjx-c><mjx-c class="mjx-c74"></mjx-c><mjx-c class="mjx-c73"></mjx-c><mjx-c class="mjx-c74"></mjx-c><mjx-c class="mjx-c61"></mjx-c><mjx-c class="mjx-c6E"></mjx-c><mjx-c class="mjx-c64"></mjx-c><mjx-c class="mjx-c69"></mjx-c><mjx-c class="mjx-c6E"></mjx-c><mjx-c class="mjx-c67"></mjx-c><mjx-c class="mjx-c20"></mjx-c><mjx-c class="mjx-c53"></mjx-c><mjx-c class="mjx-c68"></mjx-c><mjx-c class="mjx-c61"></mjx-c><mjx-c class="mjx-c72"></mjx-c><mjx-c class="mjx-c65"></mjx-c><mjx-c class="mjx-c73"></mjx-c></mjx-mtext></mjx-den></mjx-row></mjx-dtable></mjx-dbox></mjx-frac></mjx-mfrac><mjx-tstrut></mjx-tstrut></mjx-mtd></mjx-mtr></mjx-itable></mjx-table></mjx-mtable><mjx-tstrut></mjx-tstrut></mjx-mtd></mjx-mlabeledtr></mjx-itable></mjx-table><mjx-labels style="width: 22.671em;"><mjx-itable align="right" style="right: 0px;"><mjx-mtr style="height: 2.273em;"><mjx-mtd id="mjx-eqn:2"><mjx-mtext class="mjx-n"><mjx-c class="mjx-c28"></mjx-c><mjx-c class="mjx-c32"></mjx-c><mjx-c class="mjx-c29"></mjx-c></mjx-mtext><mjx-tstrut style="height: 2.273em; vertical-align: -0.887em;"></mjx-tstrut></mjx-mtd></mjx-mtr></mjx-itable></mjx-labels></mjx-mtable></mjx-math><mjx-assistive-mml unselectable="on" display="block"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mtable displaystyle="true"><mlabeledtr><mtd><mtext>(2)</mtext></mtd><mtd><mtable displaystyle="true" columnalign="right left" columnspacing="0em" rowspacing="3pt"><mtr><mtd><mtext>Earnings per Share</mtext></mtd><mtd><mi></mi><mo>=</mo><mfrac><mtext>Profits</mtext><mtext>Outstanding Shares</mtext></mfrac></mtd></mtr></mtable></mtd></mlabeledtr></mtable></math></mjx-assistive-mml></mjx-container></span></span></p>
-<p>When comparing companies for potential investments, it is important 
-to compare similar companies. A common method of categorization is by 
-Market Capitalization, or Market Cap. Market Cap is simply a company’s 
-stock price multiplied by the number of outstanding shares. It’s evident
- by this definition, that a company’s Market Cap can change at 
-practically any time. During earnings calls, an average of the stock 
-price over the quarter is used to calculate Market Cap, barring any 
-outlandish fluctuations in stock price.</p>
-<p><span id="eq-poisson"><span class="math display"><mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" style="font-size: 102.7%; min-width: 25.36em; position: relative;" display="true" width="full" tabindex="0" ctxtmenu_counter="2"><mjx-math width="full" display="true" class="MJX-TEX" aria-hidden="true"><mjx-mtable width="full" style="min-width: 25.36em;" side="right"><mjx-table style="width: auto; min-width: 21.204em; margin: 0px 2.078em;"><mjx-itable width="full"><mjx-mlabeledtr><mjx-mtd><mjx-mtable style="min-width: 21.204em;"><mjx-table><mjx-itable><mjx-mtr><mjx-mtd style="text-align: right; padding-right: 0px;"><mjx-mtext class="mjx-n"><mjx-c class="mjx-c4D"></mjx-c><mjx-c class="mjx-c61"></mjx-c><mjx-c class="mjx-c72"></mjx-c><mjx-c class="mjx-c6B"></mjx-c><mjx-c class="mjx-c65"></mjx-c><mjx-c class="mjx-c74"></mjx-c><mjx-c class="mjx-c20"></mjx-c><mjx-c class="mjx-c43"></mjx-c><mjx-c class="mjx-c61"></mjx-c><mjx-c class="mjx-c70"></mjx-c></mjx-mtext><mjx-tstrut></mjx-tstrut></mjx-mtd><mjx-mtd style="text-align: left; padding-left: 0px;"><mjx-mi class="mjx-n"></mjx-mi><mjx-mo class="mjx-n" space="4"><mjx-c class="mjx-c3D"></mjx-c></mjx-mo><mjx-mtext class="mjx-n" space="4"><mjx-c class="mjx-c53"></mjx-c><mjx-c class="mjx-c74"></mjx-c><mjx-c class="mjx-c6F"></mjx-c><mjx-c class="mjx-c63"></mjx-c><mjx-c class="mjx-c6B"></mjx-c><mjx-c class="mjx-c20"></mjx-c><mjx-c class="mjx-c50"></mjx-c><mjx-c class="mjx-c72"></mjx-c><mjx-c class="mjx-c69"></mjx-c><mjx-c class="mjx-c63"></mjx-c><mjx-c class="mjx-c65"></mjx-c></mjx-mtext><mjx-mo class="mjx-n" space="3"><mjx-c class="mjx-cD7"></mjx-c></mjx-mo><mjx-mtext class="mjx-n" space="3"><mjx-c class="mjx-c4F"></mjx-c><mjx-c class="mjx-c75"></mjx-c><mjx-c class="mjx-c74"></mjx-c><mjx-c class="mjx-c73"></mjx-c><mjx-c class="mjx-c74"></mjx-c><mjx-c class="mjx-c61"></mjx-c><mjx-c class="mjx-c6E"></mjx-c><mjx-c class="mjx-c64"></mjx-c><mjx-c class="mjx-c69"></mjx-c><mjx-c class="mjx-c6E"></mjx-c><mjx-c class="mjx-c67"></mjx-c><mjx-c class="mjx-c20"></mjx-c><mjx-c class="mjx-c53"></mjx-c><mjx-c class="mjx-c68"></mjx-c><mjx-c class="mjx-c61"></mjx-c><mjx-c class="mjx-c72"></mjx-c><mjx-c class="mjx-c65"></mjx-c><mjx-c class="mjx-c73"></mjx-c></mjx-mtext><mjx-tstrut></mjx-tstrut></mjx-mtd></mjx-mtr></mjx-itable></mjx-table></mjx-mtable><mjx-tstrut></mjx-tstrut></mjx-mtd></mjx-mlabeledtr></mjx-itable></mjx-table><mjx-labels style="width: 25.36em;"><mjx-itable align="right" style="right: 0px;"><mjx-mtr style="height: 1em;"><mjx-mtd id="mjx-eqn:3"><mjx-mtext class="mjx-n"><mjx-c class="mjx-c28"></mjx-c><mjx-c class="mjx-c33"></mjx-c><mjx-c class="mjx-c29"></mjx-c></mjx-mtext><mjx-tstrut style="height: 1em; vertical-align: -0.25em;"></mjx-tstrut></mjx-mtd></mjx-mtr></mjx-itable></mjx-labels></mjx-mtable></mjx-math><mjx-assistive-mml unselectable="on" display="block"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mtable displaystyle="true"><mlabeledtr><mtd><mtext>(3)</mtext></mtd><mtd><mtable displaystyle="true" columnalign="right left" columnspacing="0em" rowspacing="3pt"><mtr><mtd><mtext>Market Cap</mtext></mtd><mtd><mi></mi><mo>=</mo><mtext>Stock Price</mtext><mo>×</mo><mtext>Outstanding Shares</mtext></mtd></mtr></mtable></mtd></mlabeledtr></mtable></math></mjx-assistive-mml></mjx-container></span></span></p>
+<h2 data-number="2.2" class="anchored" data-anchor-id="predicting-prices"><span class="header-section-number">2.2</span> Predicting Prices</h2>
+<p>Some features in our analysis are results of calculating other metrics, for example: Contract ÷ Market Cap and 5-day average. Other features included in this project make references to Earnings Calls, which we will discuss next.</p>
+<p>Just about anybody with a phone, internet connection, and money can become an investor in the stock market. When deciding which stock to purchase, investors rely on key information <em>specific to each company</em>.</p>
+<p>One metric is the Earnings per Share (EPS), which is calculated by dividing that company’s profits (over a set period of time) by the number of shares that are available to purchase, also known as <em>outstanding shares</em>.</p>
+<p><span id="eq-poisson"><span class="math display">\[
+\begin{aligned}
+\text{Profit} &amp;= \text{Revenue - Expenses}
+\end{aligned}
+\tag{1}\]</span></span></p>
+<p>The timeframe can be any length of time, but generally is calculated each quarter and discussed at the company’s Earnings Call. Publicly-traded companies typically hold <strong>Earnings Calls</strong> where their representatives share the company’s financial outcomes for the previous quarter.</p>
+<p><span id="eq-poisson"><span class="math display">\[
+\begin{aligned}
+\text{Earnings per Share} &amp;= \frac{\text{Profits}}{\text{Outstanding Shares}}
+\end{aligned}
+\tag{2}\]</span></span></p>
+<p>When comparing companies for potential investments, it is important to compare similar companies. A common method of categorization is by Market Capitalization, or Market Cap. Market Cap is simply a company’s stock price multiplied by the number of outstanding shares. It’s evident by this definition, that a company’s Market Cap can change at practically any time. During earnings calls, an average of the stock price over the quarter is used to calculate Market Cap, barring any outlandish fluctuations in stock price.</p>
+<p><span id="eq-poisson"><span class="math display">\[
+\begin{aligned}
+\text{Market Cap} &amp;= \text{Stock Price} \times \text{Outstanding Shares}
+\end{aligned}
+\tag{3}\]</span></span></p>
 </section>
 <section id="government-contract-awards-process" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="government-contract-awards-process"><span class="header-section-number">2.3</span> Government Contract Awards Process<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#government-contract-awards-process" style="font: 1em / 1 anchorjs-icons; margin-left: 0.1875em; padding-right: 0.1875em; padding-left: 0.1875em;"></a></h2>
-<p>Our project is motivated in part by the goal of providing 
-transparency to the general population with regards to how contracts can
- influence markets. One of the main pillars of our motivation is to 
-address the mistrust many citizens feel towards elected government 
-officials. We want to highlight differences between a legislator and an 
-officer who is involved in awarding a contract to a company.</p>
-<p>There are several pathways through which a company can be awarded a 
-government contract. Typically, the final decision is made by a 
-contracting officer, a government official authorized to enter into and 
-manage contractual agreements on behalf of a federal agency. The 
-contracting officer collaborates with subject matter experts within 
-their agency to establish specific evaluation criteria for selecting 
-vendors.</p>
-<p>One common method is the Lowest Price Technically Acceptable (LPTA) 
-approach, often referred to as awarding the contract to the “lowest 
-bidder.” In this process, the contract is awarded to the vendor who 
-offers the lowest price while still meeting the minimum technical 
-requirements.</p>
-<p>An alternative method involves a best-value tradeoff, which assesses 
-the overall value delivered per dollar spent. This method considers 
-factors such as technical quality, past performance, and long-term 
-benefits and not just cost. Best-value selections tend to be more 
-complex and require greater subject-matter expertise to evaluate 
-properly.</p>
+<h2 data-number="2.3" class="anchored" data-anchor-id="government-contract-awards-process"><span class="header-section-number">2.3</span> Government Contract Awards Process</h2>
+<p>Our project is motivated in part by the goal of providing transparency to the general population with regards to how contracts can influence markets. One of the main pillars of our motivation is to address the mistrust many citizens feel towards elected government officials. We want to highlight differences between a legislator and an officer who is involved in awarding a contract to a company.</p>
+<p>There are several pathways through which a company can be awarded a government contract. Typically, the final decision is made by a contracting officer, a government official authorized to enter into and manage contractual agreements on behalf of a federal agency. The contracting officer collaborates with subject matter experts within their agency to establish specific evaluation criteria for selecting vendors.</p>
+<p>One common method is the Lowest Price Technically Acceptable (LPTA) approach, often referred to as awarding the contract to the “lowest bidder.” In this process, the contract is awarded to the vendor who offers the lowest price while still meeting the minimum technical requirements.</p>
+<p>An alternative method involves a best-value tradeoff, which assesses the overall value delivered per dollar spent. This method considers factors such as technical quality, past performance, and long-term benefits and not just cost. Best-value selections tend to be more complex and require greater subject-matter expertise to evaluate properly.</p>
 </section>
 </section>
 <section id="data" class="level1" data-number="3">
 <h1 data-number="3"><span class="header-section-number">3</span> Data</h1>
 <section id="sources" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="sources"><span class="header-section-number">3.1</span> Sources<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#sources" style="font: 1em / 1 anchorjs-icons; margin-left: 0.1875em; padding-right: 0.1875em; padding-left: 0.1875em;"></a></h2>
-<p>Our dataset is comprised of information from three sources, shown in <a href="#fig-data-sources" class="quarto-xref" aria-expanded="false">Figure&nbsp;1</a>, each requiring a unique blend of Extraction, Transformation, and Loading into our database.</p>
+<h2 data-number="3.1" class="anchored" data-anchor-id="sources"><span class="header-section-number">3.1</span> Sources</h2>
+<p>Our dataset is comprised of information from three sources, shown in <a href="#fig-data-sources" class="quarto-xref">Figure&nbsp;1</a>, each requiring a unique blend of Extraction, Transformation, and Loading into our database.</p>
 <div id="fig-data-sources" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-data-sources-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="https://wu-msds-capstones.github.io/project-writeup-rudy-edward-capstone/images/sources.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;1: Publicly available data sources used in this project."><img src="A%20Gradient%20Descent%20into%20Government%20Spending_files/sources.png" class="img-fluid figure-img" style="width:60.0%"></a>
+<a href="./images/sources.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;1: Publicly available data sources used in this project."><img src="./images/sources.png" class="img-fluid figure-img" style="width:60.0%"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-data-sources-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1: Publicly available data sources used in this project.
 </figcaption>
 </figure>
-<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#fig-data-sources" style="font: 1em / 1 anchorjs-icons; margin-left: 0.1875em; padding-right: 0.1875em; padding-left: 0.1875em;"></a></div>
+</div>
 <section id="usa-spending" class="level3" data-number="3.1.1">
-<h3 data-number="3.1.1" class="anchored" data-anchor-id="usa-spending"><span class="header-section-number">3.1.1</span> USA Spending<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#usa-spending" style="font: 1em / 1 anchorjs-icons; margin-left: 0.1875em; padding-right: 0.1875em; padding-left: 0.1875em;"></a></h3>
-<p>USA Spending (USASpending.gov) is operated by the United States 
-federal government and posts details about federal contracts that have 
-been awarded. Information presented here include: the award date, 
-company’s name, industrial sector, services contracted, and contract 
-amount.</p>
+<h3 data-number="3.1.1" class="anchored" data-anchor-id="usa-spending"><span class="header-section-number">3.1.1</span> USA Spending</h3>
+<p>USA Spending (USASpending.gov) is operated by the United States federal government and posts details about federal contracts that have been awarded. Information presented here include: the award date, company’s name, industrial sector, services contracted, and contract amount.</p>
 </section>
 <section id="nasdaq" class="level3" data-number="3.1.2">
-<h3 data-number="3.1.2" class="anchored" data-anchor-id="nasdaq"><span class="header-section-number">3.1.2</span> Nasdaq<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#nasdaq" style="font: 1em / 1 anchorjs-icons; margin-left: 0.1875em; padding-right: 0.1875em; padding-left: 0.1875em;"></a></h3>
-<p>Nasdaq is one of the securities exchanges in the United States. Not 
-every publicly-traded company is listed on the Nasdaq, however, Nasdaq 
-does post information such as company name and ticker symbol for each 
-company listed on the Nasdaq and other exchanges.</p>
+<h3 data-number="3.1.2" class="anchored" data-anchor-id="nasdaq"><span class="header-section-number">3.1.2</span> Nasdaq</h3>
+<p>Nasdaq is one of the securities exchanges in the United States. Not every publicly-traded company is listed on the Nasdaq, however, Nasdaq does post information such as company name and ticker symbol for each company listed on the Nasdaq and other exchanges.</p>
 </section>
 <section id="yahoo-finance-via-yfinance" class="level3" data-number="3.1.3">
-<h3 data-number="3.1.3" class="anchored" data-anchor-id="yahoo-finance-via-yfinance"><span class="header-section-number">3.1.3</span> Yahoo Finance (via yFinance)<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#yahoo-finance-via-yfinance" style="font: 1em / 1 anchorjs-icons; margin-left: 0.1875em; padding-right: 0.1875em; padding-left: 0.1875em;"></a></h3>
-<p>Yahoo Finance is a highly-respected platform for viewing stock market
- data and related news. Independent contributors have created yFinance, a
- package available via the Python platform, along with others. Yahoo 
-Finance and yFinance are not affiliated, rather the makers of yFinance 
-extract data from Yahoo Finance’s site and publish it for public use.</p>
+<h3 data-number="3.1.3" class="anchored" data-anchor-id="yahoo-finance-via-yfinance"><span class="header-section-number">3.1.3</span> Yahoo Finance (via yFinance)</h3>
+<p>Yahoo Finance is a highly-respected platform for viewing stock market data and related news. Independent contributors have created yFinance, a package available via the Python platform, along with others. Yahoo Finance and yFinance are not affiliated, rather the makers of yFinance extract data from Yahoo Finance’s site and publish it for public use.</p>
 </section>
 </section>
 <section id="data-engineering---extract-transform-load-etl" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="data-engineering---extract-transform-load-etl"><span class="header-section-number">3.2</span> Data Engineering - Extract, Transform, &amp; Load (ETL)<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#data-engineering---extract-transform-load-etl" style="font: 1em / 1 anchorjs-icons; margin-left: 0.1875em; padding-right: 0.1875em; padding-left: 0.1875em;"></a></h2>
-<p>Our ETL process was not linear. Before we could call our final stock 
-data, we needed stock ticker data and contract award dates. This 
-information would allow us to focus our API calls fro myFinance. <a href="#fig-etl" class="quarto-xref" aria-expanded="false">Figure&nbsp;2</a> below is an overview at our ETL process.</p>
+<h2 data-number="3.2" class="anchored" data-anchor-id="data-engineering---extract-transform-load-etl"><span class="header-section-number">3.2</span> Data Engineering - Extract, Transform, &amp; Load (ETL)</h2>
+<p>Our ETL process was not linear. Before we could call our final stock data, we needed stock ticker data and contract award dates. This information would allow us to focus our API calls fro myFinance. <a href="#fig-etl" class="quarto-xref">Figure&nbsp;2</a> below is an overview at our ETL process.</p>
 <div id="fig-etl" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-etl-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="https://wu-msds-capstones.github.io/project-writeup-rudy-edward-capstone/images/etl_swimlanes.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;2: A generalized view of the extraction, transformation, and loading process."><img src="A%20Gradient%20Descent%20into%20Government%20Spending_files/etl_swimlanes.png" class="img-fluid figure-img" style="width:100.0%"></a>
+<a href="./images/etl_swimlanes.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;2: A generalized view of the extraction, transformation, and loading process."><img src="./images/etl_swimlanes.png" class="img-fluid figure-img" style="width:100.0%"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-etl-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;2: A generalized view of the extraction, transformation, and loading process.
 </figcaption>
 </figure>
-<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#fig-etl" style="font: 1em / 1 anchorjs-icons; margin-left: 0.1875em; padding-right: 0.1875em; padding-left: 0.1875em;"></a></div>
+</div>
 <section id="extract" class="level3" data-number="3.2.1">
-<h3 data-number="3.2.1" class="anchored" data-anchor-id="extract"><span class="header-section-number">3.2.1</span> Extract<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#extract" style="font: 1em / 1 anchorjs-icons; margin-left: 0.1875em; padding-right: 0.1875em; padding-left: 0.1875em;"></a></h3>
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="extract"><span class="header-section-number">3.2.1</span> Extract</h3>
 <section id="usa-spending-1" class="level4" data-number="3.2.1.1">
-<h4 data-number="3.2.1.1" class="anchored" data-anchor-id="usa-spending-1"><span class="header-section-number">3.2.1.1</span> <em>USA Spending</em><a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#usa-spending-1" style="font: 1em / 1 anchorjs-icons; margin-left: 0.1875em; padding-right: 0.1875em; padding-left: 0.1875em;"></a></h4>
-<p>We downloaded a dataset directly from USASpending.gov (<em>“the government”</em>)
- after entering our desired criteria into the search fields. In an ideal
- scenario, we would have made use of the API that is provided, however, 
-the timing of our data collection did not provide the conditions for 
-this method.</p>
+<h4 data-number="3.2.1.1" class="anchored" data-anchor-id="usa-spending-1"><span class="header-section-number">3.2.1.1</span> <em>USA Spending</em></h4>
+<p>We downloaded a dataset directly from USASpending.gov (<em>“the government”</em>) after entering our desired criteria into the search fields. In an ideal scenario, we would have made use of the API that is provided, however, the timing of our data collection did not provide the conditions for this method.</p>
 </section>
 <section id="nasdaq-1" class="level4" data-number="3.2.1.2">
-<h4 data-number="3.2.1.2" class="anchored" data-anchor-id="nasdaq-1"><span class="header-section-number">3.2.1.2</span> <em>Nasdaq</em><a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#nasdaq-1" style="font: 1em / 1 anchorjs-icons; margin-left: 0.1875em; padding-right: 0.1875em; padding-left: 0.1875em;"></a></h4>
-<p>Nasdaq provides a text file with specific information related to 
-companies listed on the Nasdaq exchange. Such information includes: 
-company symbol, security name, and market category. In addition, Nasdaq 
-also provides this information for “other” companies which are not 
-listed on the Nasdaq. This text file was read into a dataframe using the
- Pandas Python library via trivial read function such as <code>pandas.read_csv()</code>.</p>
+<h4 data-number="3.2.1.2" class="anchored" data-anchor-id="nasdaq-1"><span class="header-section-number">3.2.1.2</span> <em>Nasdaq</em></h4>
+<p>Nasdaq provides a text file with specific information related to companies listed on the Nasdaq exchange. Such information includes: company symbol, security name, and market category. In addition, Nasdaq also provides this information for “other” companies which are not listed on the Nasdaq. This text file was read into a dataframe using the Pandas Python library via trivial read function such as <code>pandas.read_csv()</code>.</p>
 </section>
 <section id="yahoo-finance" class="level4" data-number="3.2.1.3">
-<h4 data-number="3.2.1.3" class="anchored" data-anchor-id="yahoo-finance"><span class="header-section-number">3.2.1.3</span> <em>Yahoo Finance</em><a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#yahoo-finance" style="font: 1em / 1 anchorjs-icons; margin-left: 0.1875em; padding-right: 0.1875em; padding-left: 0.1875em;"></a></h4>
-<p>Stock price data was called using Python and the yFinance API. We 
-structured our API call such that only tickers which belonged to 
-government contractors were called. We will discuss our method for 
-distilling those tickers in the next section.</p>
+<h4 data-number="3.2.1.3" class="anchored" data-anchor-id="yahoo-finance"><span class="header-section-number">3.2.1.3</span> <em>Yahoo Finance</em></h4>
+<p>Stock price data was called using Python and the yFinance API. We structured our API call such that only tickers which belonged to government contractors were called. We will discuss our method for distilling those tickers in the next section.</p>
 </section>
 </section>
 <section id="transform" class="level3" data-number="3.2.2">
-<h3 data-number="3.2.2" class="anchored" data-anchor-id="transform"><span class="header-section-number">3.2.2</span> Transform<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#transform" style="font: 1em / 1 anchorjs-icons; margin-left: 0.1875em; padding-right: 0.1875em; padding-left: 0.1875em;"></a></h3>
+<h3 data-number="3.2.2" class="anchored" data-anchor-id="transform"><span class="header-section-number">3.2.2</span> Transform</h3>
 <section id="cleaning-the-data" class="level4" data-number="3.2.2.1">
-<h4 data-number="3.2.2.1" class="anchored" data-anchor-id="cleaning-the-data"><span class="header-section-number">3.2.2.1</span> Cleaning the data<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#cleaning-the-data" style="font: 1em / 1 anchorjs-icons; margin-left: 0.1875em; padding-right: 0.1875em; padding-left: 0.1875em;"></a></h4>
-<p>Stock tickers from the Nasdaq were filtered using Python to ensure 
-there were no duplicate companies and only common stocks were 
-represented in the data. We will refer to this resulting dataset as <code>updated_tickers</code>.</p>
-<p>As received, the data we downloaded from <em>the government</em> was 
-all the same data type, which needed to be imported into Python using 
-the proper types. In general, the data was complete, with virtually no 
-missing or corrupted information. We took a subset of this dataset to 
-only include features which we would need, such as <code>action_date</code>, <code>recipient_name</code>, and <code>federal_action_obligation</code>, explained in <a href="#tbl-key-features" class="quarto-xref" aria-expanded="false">Table&nbsp;1</a>. We will refer to this resulting dataset as <code>cleaned_gov_contracts</code>.</p>
+<h4 data-number="3.2.2.1" class="anchored" data-anchor-id="cleaning-the-data"><span class="header-section-number">3.2.2.1</span> Cleaning the data</h4>
+<p>Stock tickers from the Nasdaq were filtered using Python to ensure there were no duplicate companies and only common stocks were represented in the data. We will refer to this resulting dataset as <code>updated_tickers</code>.</p>
+<p>As received, the data we downloaded from <em>the government</em> was all the same data type, which needed to be imported into Python using the proper types. In general, the data was complete, with virtually no missing or corrupted information. We took a subset of this dataset to only include features which we would need, such as <code>action_date</code>, <code>recipient_name</code>, and <code>federal_action_obligation</code>, explained in <a href="#tbl-key-features" class="quarto-xref">Table&nbsp;1</a>. We will refer to this resulting dataset as <code>cleaned_gov_contracts</code>.</p>
 <div id="tbl-key-features" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl quarto-uncaptioned" id="tbl-key-features-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1671,212 +534,107 @@ Table&nbsp;1
 </table>
 </div>
 </figure>
-<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#tbl-key-features" style="font: 1em / 1 anchorjs-icons; margin-left: 0.1875em; padding-right: 0.1875em; padding-left: 0.1875em;"></a></div>
-<p>Company names (“recipient name”) reflected the official SEC filings, 
-which do not always match the names listed in the stock market. Another 
-finding was the presence of multiple distinct tickers from the same 
-company, which can occur for special types of securities - we will not 
-cover those types in this analysis.</p>
+</div>
+<p>Company names (“recipient name”) reflected the official SEC filings, which do not always match the names listed in the stock market. Another finding was the presence of multiple distinct tickers from the same company, which can occur for special types of securities - we will not cover those types in this analysis.</p>
 <p>To resolve mismatches and consolidate multiple tickers, we used the <em>rapidfuzz</em> Python package, which provides high-performance “fuzzy” string matching, enabled us to match data from <em>the government</em> and the Nasdaq with high confidence.</p>
 </section>
 <section id="combining-the-data" class="level4" data-number="3.2.2.2">
-<h4 data-number="3.2.2.2" class="anchored" data-anchor-id="combining-the-data"><span class="header-section-number">3.2.2.2</span> Combining the Data<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#combining-the-data" style="font: 1em / 1 anchorjs-icons; margin-left: 0.1875em; padding-right: 0.1875em; padding-left: 0.1875em;"></a></h4>
+<h4 data-number="3.2.2.2" class="anchored" data-anchor-id="combining-the-data"><span class="header-section-number">3.2.2.2</span> Combining the Data</h4>
 <p>Using <code>tickers</code> and <code>contracts</code> we used key information like <code>ticker</code> and <code>action_date</code> to make API calls to yFinance and retrieve historical stock data. The <code>ticker</code> information was essential for us to be able to tell yFinance which stock we were interested in. We used <code>action_date</code> (date at which the contract was awarded) as a marker to then request yFinance for stock data near the next earnings call.</p>
 </section>
 </section>
 <section id="load" class="level3" data-number="3.2.3">
-<h3 data-number="3.2.3" class="anchored" data-anchor-id="load"><span class="header-section-number">3.2.3</span> Load<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#load" style="font: 1em / 1 anchorjs-icons; margin-left: 0.1875em; padding-right: 0.1875em; padding-left: 0.1875em;"></a></h3>
-<p>Once the transformation phase was complete, we loaded the cleaned 
-data into a PostgreSQL database hosted in the cloud via Railway—chosen 
-for its ease of use, low cost, and reliable accessibility.</p>
-<p>We wrote a Python script to define the schema, create tables, and 
-establish relationships between data tables. Key Python packages used 
-for this stage included <strong>csv</strong> and <strong>psycopg2</strong>, which facilitated seamless interaction with the PostgreSQL database using standard credentials and connection strings.</p>
+<h3 data-number="3.2.3" class="anchored" data-anchor-id="load"><span class="header-section-number">3.2.3</span> Load</h3>
+<p>Once the transformation phase was complete, we loaded the cleaned data into a PostgreSQL database hosted in the cloud via Railway—chosen for its ease of use, low cost, and reliable accessibility.</p>
+<p>We wrote a Python script to define the schema, create tables, and establish relationships between data tables. Key Python packages used for this stage included <strong>csv</strong> and <strong>psycopg2</strong>, which facilitated seamless interaction with the PostgreSQL database using standard credentials and connection strings.</p>
 </section>
 </section>
 <section id="overall-trends" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="overall-trends"><span class="header-section-number">3.3</span> Overall Trends<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#overall-trends" style="font: 1em / 1 anchorjs-icons; margin-left: 0.1875em; padding-right: 0.1875em; padding-left: 0.1875em;"></a></h2>
-<p>In political discourse, a recurring question is “where” and “why” 
-Congressional spending occurs. To explore the “where,” we examined how 
-federal contract dollars are distributed across U.S. government 
-agencies.</p>
-<p>Our initial analysis shows that the <strong>Department of Defense</strong> (DoD) receives the largest allocation of contract funding. Notably, as can be seen in <a href="#fig-spending-top-10" class="quarto-xref" aria-expanded="false">Figure&nbsp;3</a>,
- the gap between the top two agencies—DoD and the Department of Veterans
- Affairs (VA)—is approximately $961 billion, which is substantial. At 
-the opposite end, the Department of Transportation and Department of 
-Commerce receive the least funding.</p>
+<h2 data-number="3.3" class="anchored" data-anchor-id="overall-trends"><span class="header-section-number">3.3</span> Overall Trends</h2>
+<p>In political discourse, a recurring question is “where” and “why” Congressional spending occurs. To explore the “where,” we examined how federal contract dollars are distributed across U.S. government agencies.</p>
+<p>Our initial analysis shows that the <strong>Department of Defense</strong> (DoD) receives the largest allocation of contract funding. Notably, as can be seen in <a href="#fig-spending-top-10" class="quarto-xref">Figure&nbsp;3</a>, the gap between the top two agencies—DoD and the Department of Veterans Affairs (VA)—is approximately $961 billion, which is substantial. At the opposite end, the Department of Transportation and Department of Commerce receive the least funding.</p>
 <div id="fig-spending-top-10" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-spending-top-10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="https://wu-msds-capstones.github.io/project-writeup-rudy-edward-capstone/eda_plots/top_10_spending.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;3: A representation of government spending by agency"><img src="A%20Gradient%20Descent%20into%20Government%20Spending_files/top_10_spending.png" class="img-fluid figure-img" style="width:100.0%"></a>
+<a href="./eda_plots/top_10_spending.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;3: A representation of government spending by agency"><img src="./eda_plots/top_10_spending.png" class="img-fluid figure-img" style="width:100.0%"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spending-top-10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3: A representation of government spending by agency
 </figcaption>
 </figure>
-<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#fig-spending-top-10" style="font: 1em / 1 anchorjs-icons; margin-left: 0.1875em; padding-right: 0.1875em; padding-left: 0.1875em;"></a></div>
-<p>Building on this, we investigated how DoD funding is distributed 
-among private contractors. We observed that multiple subsidiaries of the
- same parent company appear among the top recipients of federal funds, 
-as shown in <a href="#fig-spending-top-10-defense" class="quarto-xref" aria-expanded="false">Figure&nbsp;4</a>.</p>
+</div>
+<p>Building on this, we investigated how DoD funding is distributed among private contractors. We observed that multiple subsidiaries of the same parent company appear among the top recipients of federal funds, as shown in <a href="#fig-spending-top-10-defense" class="quarto-xref">Figure&nbsp;4</a>.</p>
 <div id="fig-spending-top-10-defense" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-spending-top-10-defense-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="https://wu-msds-capstones.github.io/project-writeup-rudy-edward-capstone/eda_plots/top_10_defense.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure&nbsp;4: A representation of defense spending by contractor"><img src="A%20Gradient%20Descent%20into%20Government%20Spending_files/top_10_defense.png" class="img-fluid figure-img" style="width:100.0%"></a>
+<a href="./eda_plots/top_10_defense.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure&nbsp;4: A representation of defense spending by contractor"><img src="./eda_plots/top_10_defense.png" class="img-fluid figure-img" style="width:100.0%"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spending-top-10-defense-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;4: A representation of defense spending by contractor
 </figcaption>
 </figure>
-<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#fig-spending-top-10-defense" style="font: 1em / 1 anchorjs-icons; margin-left: 0.1875em; padding-right: 0.1875em; padding-left: 0.1875em;"></a></div>
-<p>These findings highlight how federal tax dollars can appear to be 
-clustered within a few corporate families, even though the entities 
-receiving the contracts are technically distinct subsidiaries.</p>
-<p>Another key finding was the trend in government funding allocation. This situation, shown in <a href="#fig-spending-by-month" class="quarto-xref" aria-expanded="false">Figure&nbsp;5</a>,
- is particularly noteworthy given the recent change in presidential 
-administration. While it is not immediately clear whether the surge in 
-spending observed in February 2025 is directly related to the 
-transition, it is certainly a development worth monitoring.</p>
+</div>
+<p>These findings highlight how federal tax dollars can appear to be clustered within a few corporate families, even though the entities receiving the contracts are technically distinct subsidiaries.</p>
+<p>Another key finding was the trend in government funding allocation. This situation, shown in <a href="#fig-spending-by-month" class="quarto-xref">Figure&nbsp;5</a>, is particularly noteworthy given the recent change in presidential administration. While it is not immediately clear whether the surge in spending observed in February 2025 is directly related to the transition, it is certainly a development worth monitoring.</p>
 <div id="fig-spending-by-month" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-spending-by-month-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="https://wu-msds-capstones.github.io/project-writeup-rudy-edward-capstone/eda_plots/spending_by_month_year.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;5: A timeline of government spending"><img src="A%20Gradient%20Descent%20into%20Government%20Spending_files/spending_by_month_year.png" class="img-fluid figure-img" style="width:100.0%"></a>
+<a href="./eda_plots/spending_by_month_year.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;5: A timeline of government spending"><img src="./eda_plots/spending_by_month_year.png" class="img-fluid figure-img" style="width:100.0%"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spending-by-month-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;5: A timeline of government spending
 </figcaption>
 </figure>
-<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#fig-spending-by-month" style="font: 1em / 1 anchorjs-icons; margin-left: 0.1875em; padding-right: 0.1875em; padding-left: 0.1875em;"></a></div>
+</div>
 </section>
 <section id="initial-impressions" class="level2" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="initial-impressions"><span class="header-section-number">3.4</span> Initial Impressions<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#initial-impressions" style="font: 1em / 1 anchorjs-icons; margin-left: 0.1875em; padding-right: 0.1875em; padding-left: 0.1875em;"></a></h2>
-<p>The visuals in the previous section reveal a significant disparity in
- funding allocations across government agencies. While this spread alone
- does not indicate a problem, it is an interesting observation. In the 
-media, defense contractors are often portrayed as safe investments. 
-Bookmap notes that “as an investor looking for the best defense stocks 
-to invest in 2025, you can consider companies that secure government 
-defense contracts,” citing “steady growth due to increased military 
-spending” <span class="citation" data-cites="Bookmap2025">(<a href="#ref-Bookmap2025" role="doc-biblioref" aria-expanded="false">Bookmap 2025</a>)</span>.</p>
+<h2 data-number="3.4" class="anchored" data-anchor-id="initial-impressions"><span class="header-section-number">3.4</span> Initial Impressions</h2>
+<p>The visuals in the previous section reveal a significant disparity in funding allocations across government agencies. While this spread alone does not indicate a problem, it is an interesting observation. In the media, defense contractors are often portrayed as safe investments. Bookmap notes that “as an investor looking for the best defense stocks to invest in 2025, you can consider companies that secure government defense contracts,” citing “steady growth due to increased military spending” <span class="citation" data-cites="Bookmap2025">(<a href="#ref-Bookmap2025" role="doc-biblioref">Bookmap 2025</a>)</span>.</p>
 </section>
 <section id="analytical-direction" class="level2" data-number="3.5">
-<h2 data-number="3.5" class="anchored" data-anchor-id="analytical-direction"><span class="header-section-number">3.5</span> Analytical Direction<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#analytical-direction" style="font: 1em / 1 anchorjs-icons; margin-left: 0.1875em; padding-right: 0.1875em; padding-left: 0.1875em;"></a></h2>
-<p>These initial findings guided our next steps. We were struck by the 
-scale of some figures in the dataset—defense budgets reaching billions 
-of dollars—which we believed could have an outsized impact on stock 
-prices. While company categorization (e.g., defense vs.&nbsp;energy) 
-seemed potentially relevant, certain sectors clearly dominated in terms 
-of total dollar amounts.</p>
-<p>Media research reinforced a focus on quantitative analysis. For 
-example, Investopedia notes that value investing relies on “financial 
-ratios to help analyze a company’s fundamentals” <span class="citation" data-cites="Elmerraji2024">(<a href="#ref-Elmerraji2024" role="doc-biblioref" aria-expanded="false">Elmerraji 2024</a>)</span>, and Charles Schwab advises investors to “watch key indicators,” “determine momentum,” and “watch the charts” <span class="citation" data-cites="Schwab2024">(<a href="#ref-Schwab2024" role="doc-biblioref" aria-expanded="false">Charles Schwab 2024</a>)</span>. These sources suggest that core market influences are rooted in numerical data and trends.</p>
-<p>While rhetorical and qualitative factors may play a role, we 
-prioritized numerical measures with a strong historical basis. Our 
-compiled dataset primarily consisted of continuous numerical variables. 
-Although we considered creating Boolean features, we chose to maintain a
- focus on continuous data to preserve detail and variability.</p>
-<p>Drawing on extensive publicly available market analysis and investor 
-strategies, we explored machine learning models suited to numerical 
-data, such as Extreme Gradient Boosting (XGBoost), to analyze these 
-trends.</p>
+<h2 data-number="3.5" class="anchored" data-anchor-id="analytical-direction"><span class="header-section-number">3.5</span> Analytical Direction</h2>
+<p>These initial findings guided our next steps. We were struck by the scale of some figures in the dataset—defense budgets reaching billions of dollars—which we believed could have an outsized impact on stock prices. While company categorization (e.g., defense vs.&nbsp;energy) seemed potentially relevant, certain sectors clearly dominated in terms of total dollar amounts.</p>
+<p>Media research reinforced a focus on quantitative analysis. For example, Investopedia notes that value investing relies on “financial ratios to help analyze a company’s fundamentals” <span class="citation" data-cites="Elmerraji2024">(<a href="#ref-Elmerraji2024" role="doc-biblioref">Elmerraji 2024</a>)</span>, and Charles Schwab advises investors to “watch key indicators,” “determine momentum,” and “watch the charts” <span class="citation" data-cites="Schwab2024">(<a href="#ref-Schwab2024" role="doc-biblioref">Charles Schwab 2024</a>)</span>. These sources suggest that core market influences are rooted in numerical data and trends.</p>
+<p>While rhetorical and qualitative factors may play a role, we prioritized numerical measures with a strong historical basis. Our compiled dataset primarily consisted of continuous numerical variables. Although we considered creating Boolean features, we chose to maintain a focus on continuous data to preserve detail and variability.</p>
+<p>Drawing on extensive publicly available market analysis and investor strategies, we explored machine learning models suited to numerical data, such as Extreme Gradient Boosting (XGBoost), to analyze these trends.</p>
 </section>
 <section id="analysis" class="level2" data-number="3.6">
-<h2 data-number="3.6" class="anchored" data-anchor-id="analysis"><span class="header-section-number">3.6</span> Analysis<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#analysis" style="font: 1em / 1 anchorjs-icons; margin-left: 0.1875em; padding-right: 0.1875em; padding-left: 0.1875em;"></a></h2>
+<h2 data-number="3.6" class="anchored" data-anchor-id="analysis"><span class="header-section-number">3.6</span> Analysis</h2>
 <section id="why-xgboost-was-chosen" class="level3" data-number="3.6.1">
-<h3 data-number="3.6.1" class="anchored" data-anchor-id="why-xgboost-was-chosen"><span class="header-section-number">3.6.1</span> Why XGBoost Was Chosen<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#why-xgboost-was-chosen" style="font: 1em / 1 anchorjs-icons; margin-left: 0.1875em; padding-right: 0.1875em; padding-left: 0.1875em;"></a></h3>
-<p>The primary model selected for this study was XGBoost (Extreme 
-Gradient Boosting), chosen for its ability to handle the complex and 
-non-linear relationships inherent in financial data. The interactions 
-between contract size, stock price momentum, earnings timing, and risk 
-signals are not easily captured by linear models. XGBoost is 
-particularly well-suited for this type of data because it can learn 
-non-linear feature interactions automatically, without the need for 
-manual feature transformation <span class="citation" data-cites="Chen2016">(<a href="#ref-Chen2016" role="doc-biblioref" aria-expanded="false">Chen and Guestrin 2016</a>)</span>.
- Additionally, XGBoost is also highly robust to multicollinearity and 
-feature noise, both of which are present in our dataset due to the 
-nature of the stock market.</p>
-<p>Finally, XGBoost provides strong built-in support for model 
-interpretability, including feature importance metrics and compatibility
- with SHAP (SHapley Additive Explanations). This interpretability is 
-critical in financial contexts, where transparency is essential for 
-model trustworthiness and actionable decision-making.</p>
+<h3 data-number="3.6.1" class="anchored" data-anchor-id="why-xgboost-was-chosen"><span class="header-section-number">3.6.1</span> Why XGBoost Was Chosen</h3>
+<p>The primary model selected for this study was XGBoost (Extreme Gradient Boosting), chosen for its ability to handle the complex and non-linear relationships inherent in financial data. The interactions between contract size, stock price momentum, earnings timing, and risk signals are not easily captured by linear models. XGBoost is particularly well-suited for this type of data because it can learn non-linear feature interactions automatically, without the need for manual feature transformation <span class="citation" data-cites="Chen2016">(<a href="#ref-Chen2016" role="doc-biblioref">Chen and Guestrin 2016</a>)</span>. Additionally, XGBoost is also highly robust to multicollinearity and feature noise, both of which are present in our dataset due to the nature of the stock market.</p>
+<p>Finally, XGBoost provides strong built-in support for model interpretability, including feature importance metrics and compatibility with SHAP (SHapley Additive Explanations). This interpretability is critical in financial contexts, where transparency is essential for model trustworthiness and actionable decision-making.</p>
 </section>
 <section id="xgboost-vs.-random-forest-and-logistic-regression" class="level3" data-number="3.6.2">
-<h3 data-number="3.6.2" class="anchored" data-anchor-id="xgboost-vs.-random-forest-and-logistic-regression"><span class="header-section-number">3.6.2</span> XGBoost vs.&nbsp;Random Forest and Logistic Regression<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#xgboost-vs.-random-forest-and-logistic-regression" style="font: 1em / 1 anchorjs-icons; margin-left: 0.1875em; padding-right: 0.1875em; padding-left: 0.1875em;"></a></h3>
-<p>To evaluate the effectiveness of XGBoost, we benchmarked its 
-performance against two alternative models: Random Forest Regressor and 
-Logistic Regression. These models were selected to represent a 
-tree-based ensemble baseline and a simple linear approach, respectively.</p>
-<p>While Random Forest provided a strong baseline due to its ensemble 
-nature, it lacked the refinement of gradient boosting. In particular, it
- struggled to generalize on edge cases involving high-magnitude stock 
-movements, and produced higher average error metrics overall. Its lack 
-of gradient-informed updates meant it required more trees to reach 
-similar performance, yet still underperformed on volatility-sensitive 
-contract events.</p>
-<p>Logistic Regression, although computationally efficient and highly 
-interpretable, proved insufficient for the complexity of the task. The 
-model’s inability to capture non-linear relationships or interactions 
-between variables - such as momentum interacting with EPS timing - led 
-to severe under-fitting. It consistently failed to predict large price 
-movements and tended to regress predictions toward the mean.</p>
-<p>In contrast, XGBoost consistently outperformed both alternatives 
-across all key evaluation metrics. On the test set, it achieved higher 
-R² scores and lower root mean squared error (RMSE) and mean absolute 
-error (MAE). It was particularly effective in cases where contracts were
- awarded near earnings calls or involved higher-than-average contract 
-risk scores—scenarios that require the model to detect subtle, 
-multi-variable relationships. These comparative results validated the 
-choice of XGBoost as the most reliable and expressive algorithm for 
-capturing short-term stock price movement in response to government 
-contract activity.</p>
+<h3 data-number="3.6.2" class="anchored" data-anchor-id="xgboost-vs.-random-forest-and-logistic-regression"><span class="header-section-number">3.6.2</span> XGBoost vs.&nbsp;Random Forest and Logistic Regression</h3>
+<p>To evaluate the effectiveness of XGBoost, we benchmarked its performance against two alternative models: Random Forest Regressor and Logistic Regression. These models were selected to represent a tree-based ensemble baseline and a simple linear approach, respectively.</p>
+<p>While Random Forest provided a strong baseline due to its ensemble nature, it lacked the refinement of gradient boosting. In particular, it struggled to generalize on edge cases involving high-magnitude stock movements, and produced higher average error metrics overall. Its lack of gradient-informed updates meant it required more trees to reach similar performance, yet still underperformed on volatility-sensitive contract events.</p>
+<p>Logistic Regression, although computationally efficient and highly interpretable, proved insufficient for the complexity of the task. The model’s inability to capture non-linear relationships or interactions between variables - such as momentum interacting with EPS timing - led to severe under-fitting. It consistently failed to predict large price movements and tended to regress predictions toward the mean.</p>
+<p>In contrast, XGBoost consistently outperformed both alternatives across all key evaluation metrics. On the test set, it achieved higher R² scores and lower root mean squared error (RMSE) and mean absolute error (MAE). It was particularly effective in cases where contracts were awarded near earnings calls or involved higher-than-average contract risk scores—scenarios that require the model to detect subtle, multi-variable relationships. These comparative results validated the choice of XGBoost as the most reliable and expressive algorithm for capturing short-term stock price movement in response to government contract activity.</p>
 </section>
 <section id="loss-function" class="level3" data-number="3.6.3">
-<h3 data-number="3.6.3" class="anchored" data-anchor-id="loss-function"><span class="header-section-number">3.6.3</span> Loss Function<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#loss-function" style="font: 1em / 1 anchorjs-icons; margin-left: 0.1875em; padding-right: 0.1875em; padding-left: 0.1875em;"></a></h3>
-<p>The loss function is a foundational component of supervised machine 
-learning. It defines how a model measures error during training and 
-determines the direction and magnitude of updates to improve 
-predictions. In regression tasks, this function quantifies the 
-difference between the model’s predicted value (y-hat​) and the true 
-observed value (y-true), driving the model to minimize that difference 
-across the training data.</p>
-<p>In the case of XGBoost, the choice of loss function is especially 
-important because the algorithm relies on second-order gradient 
-boosting. During training, XGBoost applies a Taylor expansion to the 
-loss function to calculate both the gradient (first derivative) and 
-hessian (second derivative) at each prediction point. These derivatives 
-allow the model to construct each tree more efficiently and accurately, 
-enabling fine-grained updates during optimization.</p>
+<h3 data-number="3.6.3" class="anchored" data-anchor-id="loss-function"><span class="header-section-number">3.6.3</span> Loss Function</h3>
+<p>The loss function is a foundational component of supervised machine learning. It defines how a model measures error during training and determines the direction and magnitude of updates to improve predictions. In regression tasks, this function quantifies the difference between the model’s predicted value (y-hat​) and the true observed value (y-true), driving the model to minimize that difference across the training data.</p>
+<p>In the case of XGBoost, the choice of loss function is especially important because the algorithm relies on second-order gradient boosting. During training, XGBoost applies a Taylor expansion to the loss function to calculate both the gradient (first derivative) and hessian (second derivative) at each prediction point. These derivatives allow the model to construct each tree more efficiently and accurately, enabling fine-grained updates during optimization.</p>
 </section>
 <section id="pseudo-huber" class="level3" data-number="3.6.4">
-<h3 data-number="3.6.4" class="anchored" data-anchor-id="pseudo-huber"><span class="header-section-number">3.6.4</span> Pseudo-Huber<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#pseudo-huber" style="font: 1em / 1 anchorjs-icons; margin-left: 0.1875em; padding-right: 0.1875em; padding-left: 0.1875em;"></a></h3>
-<p>We ultimately selected the Pseudo-Huber loss function, which blends 
-the best aspects of MSE and MAE. It behaves quadratically for small 
-errors — preserving smoothness for optimization - and linearly for large
- errors - limiting the influence of outliers. Pseudo-Huber is fully 
-differentiable, making it compatible with XGBoost’s gradient and 
-hessian-based training process. Why Pseudo-Huber Was Chosen</p>
-<p>Our target variable — the percent change in a stock price — is highly
- kurtotic. The distribution is dominated by small movements, punctuated 
-by occasional extreme spikes due to events like large defense contracts 
-or earnings report surprises. In this context, a loss function that 
-overreacts to outliers can skew the model’s learning and reduce its 
-ability to generalize.</p>
+<h3 data-number="3.6.4" class="anchored" data-anchor-id="pseudo-huber"><span class="header-section-number">3.6.4</span> Pseudo-Huber</h3>
+<p>We ultimately selected the Pseudo-Huber loss function, which blends the best aspects of MSE and MAE. It behaves quadratically for small errors — preserving smoothness for optimization - and linearly for large errors - limiting the influence of outliers. Pseudo-Huber is fully differentiable, making it compatible with XGBoost’s gradient and hessian-based training process. Why Pseudo-Huber Was Chosen</p>
+<p>Our target variable — the percent change in a stock price — is highly kurtotic. The distribution is dominated by small movements, punctuated by occasional extreme spikes due to events like large defense contracts or earnings report surprises. In this context, a loss function that overreacts to outliers can skew the model’s learning and reduce its ability to generalize.</p>
 </section>
 <section id="feature-engineering-and-importance" class="level3" data-number="3.6.5">
-<h3 data-number="3.6.5" class="anchored" data-anchor-id="feature-engineering-and-importance"><span class="header-section-number">3.6.5</span> Feature Engineering and Importance<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#feature-engineering-and-importance" style="font: 1em / 1 anchorjs-icons; margin-left: 0.1875em; padding-right: 0.1875em; padding-left: 0.1875em;"></a></h3>
-<p>Our model took into consideration variables spanning government 
-contracts, stock market data, and earnings per share (EPS) reports. <a href="#fig-top-10-features" class="quarto-xref" aria-expanded="false">Figure&nbsp;6</a> depicts a graph showing which variables the model used most often during training, as well as where the data came from. While <a href="#tbl-feature-descriptions" class="quarto-xref" aria-expanded="false">Table&nbsp;2</a> has a brief explanation as to how each of these 10 variables were contrived.</p>
+<h3 data-number="3.6.5" class="anchored" data-anchor-id="feature-engineering-and-importance"><span class="header-section-number">3.6.5</span> Feature Engineering and Importance</h3>
+<p>Our model took into consideration variables spanning government contracts, stock market data, and earnings per share (EPS) reports. <a href="#fig-top-10-features" class="quarto-xref">Figure&nbsp;6</a> depicts a graph showing which variables the model used most often during training, as well as where the data came from. While <a href="#tbl-feature-descriptions" class="quarto-xref">Table&nbsp;2</a> has a brief explanation as to how each of these 10 variables were contrived.</p>
 <div id="fig-top-10-features" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-top-10-features-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="https://wu-msds-capstones.github.io/project-writeup-rudy-edward-capstone/images/summary_bar.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Figure&nbsp;6: The Top 10 Features of Used by XGBoost Model Training"><img src="A%20Gradient%20Descent%20into%20Government%20Spending_files/summary_bar.png" class="img-fluid figure-img" style="width:100.0%"></a>
+<a href="./images/summary_bar.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Figure&nbsp;6: The Top 10 Features of Used by XGBoost Model Training"><img src="./images/summary_bar.png" class="img-fluid figure-img" style="width:100.0%"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-top-10-features-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;6: The Top 10 Features of Used by XGBoost Model Training
 </figcaption>
 </figure>
-<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#fig-top-10-features" style="font: 1em / 1 anchorjs-icons; margin-left: 0.1875em; padding-right: 0.1875em; padding-left: 0.1875em;"></a></div>
+</div>
 <div id="tbl-feature-descriptions" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl quarto-uncaptioned" id="tbl-feature-descriptions-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1905,15 +663,12 @@ Table&nbsp;2
 </tr>
 <tr class="even">
 <td>60-Day Average Open-Close</td>
-<td>Two-month average difference between stock’s open and close price 
-prior to award date; gives insight to momentum. Compliments 10-day 
-average.</td>
+<td>Two-month average difference between stock’s open and close price prior to award date; gives insight to momentum. Compliments 10-day average.</td>
 <td>GovContract + yFinance</td>
 </tr>
 <tr class="odd">
 <td>10-day Average Open-close</td>
-<td>10-day average difference between stock’s open and close price prior
- to award date; gives insight to momentum. Compliments 60-day average.</td>
+<td>10-day average difference between stock’s open and close price prior to award date; gives insight to momentum. Compliments 60-day average.</td>
 <td>GovContract + yFinance</td>
 </tr>
 <tr class="even">
@@ -1950,143 +705,88 @@ average.</td>
 </table>
 </div>
 </figure>
-<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#tbl-feature-descriptions" style="font: 1em / 1 anchorjs-icons; margin-left: 0.1875em; padding-right: 0.1875em; padding-left: 0.1875em;"></a></div>
+</div>
 </section>
 <section id="feature-importance-interpretation" class="level3" data-number="3.6.6">
-<h3 data-number="3.6.6" class="anchored" data-anchor-id="feature-importance-interpretation"><span class="header-section-number">3.6.6</span> Feature Importance Interpretation<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#feature-importance-interpretation" style="font: 1em / 1 anchorjs-icons; margin-left: 0.1875em; padding-right: 0.1875em; padding-left: 0.1875em;"></a></h3>
+<h3 data-number="3.6.6" class="anchored" data-anchor-id="feature-importance-interpretation"><span class="header-section-number">3.6.6</span> Feature Importance Interpretation</h3>
 <section id="contract-market-cap" class="level4" data-number="3.6.6.1">
-<h4 data-number="3.6.6.1" class="anchored" data-anchor-id="contract-market-cap"><span class="header-section-number">3.6.6.1</span> 1. Contract / Market Cap<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#contract-market-cap" style="font: 1em / 1 anchorjs-icons; margin-left: 0.1875em; padding-right: 0.1875em; padding-left: 0.1875em;"></a></h4>
+<h4 data-number="3.6.6.1" class="anchored" data-anchor-id="contract-market-cap"><span class="header-section-number">3.6.6.1</span> 1. Contract / Market Cap</h4>
 <p>Definition: Size of the award(s) relative to the firm’s equity value at the time of award.</p>
 <pre><code>        contract_to_cap = federal_action_obligation / market_cap_at_award</code></pre>
-<p>Depending on the company, Market Cap can reach into the hundreds of 
-billions of dollars. By contrast, contract obligations can be as low as 
-low as a few million. Because of this large difference, we created <code>contract_to_cap</code>
- to normalize across various contract obligations and market-caps — 
-allowing for versatile comparisons and limiting bias due to large Market
- Cap figures.</p>
+<p>Depending on the company, Market Cap can reach into the hundreds of billions of dollars. By contrast, contract obligations can be as low as low as a few million. Because of this large difference, we created <code>contract_to_cap</code> to normalize across various contract obligations and market-caps — allowing for versatile comparisons and limiting bias due to large Market Cap figures.</p>
 </section>
 <section id="day-average-open-close" class="level4" data-number="3.6.6.2">
-<h4 data-number="3.6.6.2" class="anchored" data-anchor-id="day-average-open-close"><span class="header-section-number">3.6.6.2</span> 2. 60-Day Average Open-Close<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#day-average-open-close" style="font: 1em / 1 anchorjs-icons; margin-left: 0.1875em; padding-right: 0.1875em; padding-left: 0.1875em;"></a></h4>
+<h4 data-number="3.6.6.2" class="anchored" data-anchor-id="day-average-open-close"><span class="header-section-number">3.6.6.2</span> 2. 60-Day Average Open-Close</h4>
 <p>Feature name: avg_open_close_delta_60d</p>
 <p>Definition: Average intra-day return over the prior 60 trading days—captures medium-term intra-day drift/behavior.</p>
 <pre><code>        Intra-day Avg = (open-close) / open</code></pre>
-<p>The same intra-day average formula is used for 60-day, 10-day, and 
-5-day averages. The purpose of the 60-day average is to attain a 
-baseline “how this stock tends to move intra-day” over the last quarter.</p>
+<p>The same intra-day average formula is used for 60-day, 10-day, and 5-day averages. The purpose of the 60-day average is to attain a baseline “how this stock tends to move intra-day” over the last quarter.</p>
 </section>
 <section id="day-average-open-close-1" class="level4" data-number="3.6.6.3">
-<h4 data-number="3.6.6.3" class="anchored" data-anchor-id="day-average-open-close-1"><span class="header-section-number">3.6.6.3</span> 3. 10-day Average Open-close<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#day-average-open-close-1" style="font: 1em / 1 anchorjs-icons; margin-left: 0.1875em; padding-right: 0.1875em; padding-left: 0.1875em;"></a></h4>
+<h4 data-number="3.6.6.3" class="anchored" data-anchor-id="day-average-open-close-1"><span class="header-section-number">3.6.6.3</span> 3. 10-day Average Open-close</h4>
 <p>Feature name: rolling_delta_10d</p>
 <p>Definition: Same as above, but over the prior 10 trading days—more reactive to recent market shifts.</p>
 </section>
 <section id="day-of-the-week" class="level4" data-number="3.6.6.4">
-<h4 data-number="3.6.6.4" class="anchored" data-anchor-id="day-of-the-week"><span class="header-section-number">3.6.6.4</span> 4. Day of the week<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#day-of-the-week" style="font: 1em / 1 anchorjs-icons; margin-left: 0.1875em; padding-right: 0.1875em; padding-left: 0.1875em;"></a></h4>
+<h4 data-number="3.6.6.4" class="anchored" data-anchor-id="day-of-the-week"><span class="header-section-number">3.6.6.4</span> 4. Day of the week</h4>
 <p>Feature name: day_of_week</p>
 <p>Definition: Trading-day index for the award date (Mon=0 … Fri=4). Encoded as categorical for the model. Construction.</p>
 <pre><code>Extract weekday from the trading calendar aligned to the action date.</code></pre>
-<p>Captures known micro-effects (e.g., Monday effect, pre-weekend 
-positioning). Trends tend to compound following announcements on Friday 
-and conversely could stall if announced on a Monday.</p>
+<p>Captures known micro-effects (e.g., Monday effect, pre-weekend positioning). Trends tend to compound following announcements on Friday and conversely could stall if announced on a Monday.</p>
 </section>
 <section id="day-avg-of-open-close" class="level4" data-number="3.6.6.5">
-<h4 data-number="3.6.6.5" class="anchored" data-anchor-id="day-avg-of-open-close"><span class="header-section-number">3.6.6.5</span> 5. 5-Day Avg of Open-Close<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#day-avg-of-open-close" style="font: 1em / 1 anchorjs-icons; margin-left: 0.1875em; padding-right: 0.1875em; padding-left: 0.1875em;"></a></h4>
+<h4 data-number="3.6.6.5" class="anchored" data-anchor-id="day-avg-of-open-close"><span class="header-section-number">3.6.6.5</span> 5. 5-Day Avg of Open-Close</h4>
 <p>Feature name: rolling_delta_5d</p>
 <p>Definition: Average intra-day % return over the prior 5 trading days—very short-term momentum/mean-reversion signal.</p>
 <p>Answers the question of what’s been happening this week between opens and closes?</p>
 </section>
 </section>
 <section id="shap-interpreting-model-behavior" class="level3" data-number="3.6.7">
-<h3 data-number="3.6.7" class="anchored" data-anchor-id="shap-interpreting-model-behavior"><span class="header-section-number">3.6.7</span> SHAP: Interpreting Model Behavior<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#shap-interpreting-model-behavior" style="font: 1em / 1 anchorjs-icons; margin-left: 0.1875em; padding-right: 0.1875em; padding-left: 0.1875em;"></a></h3>
-<p>To understand how the model makes predictions—not just how accurate 
-it is—we apply SHAP (SHapley Additive exPlanations), a method rooted in 
-cooperative game theory. SHAP assigns each feature a contribution value 
-for each prediction, allowing us to quantify and visualize how different
- features push a prediction higher or lower.</p>
-<p>SHAP supports both global interpretability—which features matter most
- across the entire dataset—and local interpretability, where we can 
-examine individual predictions in detail. Crucially, SHAP also captures 
-directionality, helping us identify whether high or low values of a 
-feature increase or decrease the predicted outcome.</p>
-<p>This level of interpretability is especially important in financial 
-contexts, where decisions may be influenced by subtle, nonlinear 
-interactions—such as the interplay between earnings report proximity, 
-contract size, and market volatility. SHAP allows us to validate that 
-the model’s logic aligns with real-world market behavior, making its 
-predictions not just performance, but also transparent and trustworthy.</p>
+<h3 data-number="3.6.7" class="anchored" data-anchor-id="shap-interpreting-model-behavior"><span class="header-section-number">3.6.7</span> SHAP: Interpreting Model Behavior</h3>
+<p>To understand how the model makes predictions—not just how accurate it is—we apply SHAP (SHapley Additive exPlanations), a method rooted in cooperative game theory. SHAP assigns each feature a contribution value for each prediction, allowing us to quantify and visualize how different features push a prediction higher or lower.</p>
+<p>SHAP supports both global interpretability—which features matter most across the entire dataset—and local interpretability, where we can examine individual predictions in detail. Crucially, SHAP also captures directionality, helping us identify whether high or low values of a feature increase or decrease the predicted outcome.</p>
+<p>This level of interpretability is especially important in financial contexts, where decisions may be influenced by subtle, nonlinear interactions—such as the interplay between earnings report proximity, contract size, and market volatility. SHAP allows us to validate that the model’s logic aligns with real-world market behavior, making its predictions not just performance, but also transparent and trustworthy.</p>
 </section>
 <section id="feature-interpretability-and-model-insights" class="level3" data-number="3.6.8">
-<h3 data-number="3.6.8" class="anchored" data-anchor-id="feature-interpretability-and-model-insights"><span class="header-section-number">3.6.8</span> Feature Interpretability and Model Insights<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#feature-interpretability-and-model-insights" style="font: 1em / 1 anchorjs-icons; margin-left: 0.1875em; padding-right: 0.1875em; padding-left: 0.1875em;"></a></h3>
-<p>Our SHAP analysis of 5,000 contract award events <a href="#fig-summary-beeswarm" class="quarto-xref" aria-expanded="false">Figure&nbsp;7</a>
- revealed distinct patterns in how the model interprets input features. 
-Short-term price momentum, captured by the five-day open-to-close 
-average, and proximity to earnings announcements (measured as days until
- EPS) consistently exerted the strongest positive influence on predicted
- stock price movement. Contract awards occurring within one to three 
-trading days prior to an earnings release—particularly when accompanied 
-by recent positive momentum and low volatility—produced the highest 
-positive SHAP values, indicating the model’s expectation of a strong 
-market reaction. Conversely, awards issued during periods of flat or 
-negative momentum were associated with smaller or negative SHAP 
-contributions, even when contract size was substantial. These findings 
-support the hypothesis that government contract announcements primarily 
-function as amplifiers of prevailing market sentiment, with their impact
- most pronounced when timed around major corporate events such as 
-earnings releases.</p>
+<h3 data-number="3.6.8" class="anchored" data-anchor-id="feature-interpretability-and-model-insights"><span class="header-section-number">3.6.8</span> Feature Interpretability and Model Insights</h3>
+<p>Our SHAP analysis of 5,000 contract award events <a href="#fig-summary-beeswarm" class="quarto-xref">Figure&nbsp;7</a> revealed distinct patterns in how the model interprets input features. Short-term price momentum, captured by the five-day open-to-close average, and proximity to earnings announcements (measured as days until EPS) consistently exerted the strongest positive influence on predicted stock price movement. Contract awards occurring within one to three trading days prior to an earnings release—particularly when accompanied by recent positive momentum and low volatility—produced the highest positive SHAP values, indicating the model’s expectation of a strong market reaction. Conversely, awards issued during periods of flat or negative momentum were associated with smaller or negative SHAP contributions, even when contract size was substantial. These findings support the hypothesis that government contract announcements primarily function as amplifiers of prevailing market sentiment, with their impact most pronounced when timed around major corporate events such as earnings releases.</p>
 <div id="fig-summary-beeswarm" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-summary-beeswarm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="https://wu-msds-capstones.github.io/project-writeup-rudy-edward-capstone/images/summary_beeswarm.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Figure&nbsp;7: SHAP Summary: Top 8 Feature Effects"><img src="A%20Gradient%20Descent%20into%20Government%20Spending_files/summary_beeswarm.png" class="img-fluid figure-img" style="width:100.0%"></a>
+<a href="./images/summary_beeswarm.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Figure&nbsp;7: SHAP Summary: Top 8 Feature Effects"><img src="./images/summary_beeswarm.png" class="img-fluid figure-img" style="width:100.0%"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-summary-beeswarm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;7: SHAP Summary: Top 8 Feature Effects
 </figcaption>
 </figure>
-<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#fig-summary-beeswarm" style="font: 1em / 1 anchorjs-icons; margin-left: 0.1875em; padding-right: 0.1875em; padding-left: 0.1875em;"></a></div>
-<p>Figure X: SHAP summary plot of the top 8 features used by the XGBoost
- model. Each point represents a contract event. Horizontal placement 
-indicates the feature’s effect on the model’s prediction (positive or 
-negative), while color reflects the feature value (red = high, blue = 
-low).</p>
+</div>
+<p>Figure X: SHAP summary plot of the top 8 features used by the XGBoost model. Each point represents a contract event. Horizontal placement indicates the feature’s effect on the model’s prediction (positive or negative), while color reflects the feature value (red = high, blue = low).</p>
 </section>
 </section>
 </section>
 <section id="results" class="level1" data-number="4">
 <h1 data-number="4"><span class="header-section-number">4</span> Results</h1>
 <section id="post-tuning" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="post-tuning"><span class="header-section-number">4.1</span> Post-Tuning<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#post-tuning" style="font: 1em / 1 anchorjs-icons; margin-left: 0.1875em; padding-right: 0.1875em; padding-left: 0.1875em;"></a></h2>
-<p>During initial training, we split the dataset randomly 80/20. This 
-inadvertently introduced data leakage, as the model was exposed to 
-future stock data during training, which inflated performance metrics. 
-Under this flawed split, the model appeared to perform strongly:</p>
+<h2 data-number="4.1" class="anchored" data-anchor-id="post-tuning"><span class="header-section-number">4.1</span> Post-Tuning</h2>
+<p>During initial training, we split the dataset randomly 80/20. This inadvertently introduced data leakage, as the model was exposed to future stock data during training, which inflated performance metrics. Under this flawed split, the model appeared to perform strongly:</p>
 <pre><code>Random 80/20 Split (leakage present)
 R²: 0.7232
 Mean Absolute Error (MAE): 0.3608
 Root Mean Squared Error (RMSE): 0.9898
 Max Error: 37.77
 Median Absolute Error: 0.0801</code></pre>
-<p>To correct this, we restructured the train/test split to be 
-chronological, ensuring the model only trained on past data and was 
-evaluated on truly unseen future data. This more realistic setup 
-revealed a substantial drop in performance, indicating that much of the 
-earlier accuracy was due to leakage:</p>
+<p>To correct this, we restructured the train/test split to be chronological, ensuring the model only trained on past data and was evaluated on truly unseen future data. This more realistic setup revealed a substantial drop in performance, indicating that much of the earlier accuracy was due to leakage:</p>
 <pre><code>Chronological Split XGBoost Model
 R²: 0.2156
 MAE: 0.7368
 RMSE: 1.6384
 Max Error: 21.39
 Median AE: 0.2646</code></pre>
-<p>The decline in R² highlights the challenge of forecasting short-term 
-stock movements from government contract data without inadvertently 
-including forward-looking information. It also suggests that the current
- feature set may be insufficient for capturing the true drivers of T+2 
-price changes.</p>
+<p>The decline in R² highlights the challenge of forecasting short-term stock movements from government contract data without inadvertently including forward-looking information. It also suggests that the current feature set may be insufficient for capturing the true drivers of T+2 price changes.</p>
 </section>
 <section id="comparison-to-baseline-models" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="comparison-to-baseline-models"><span class="header-section-number">4.2</span> Comparison to Baseline Models<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#comparison-to-baseline-models" style="font: 1em / 1 anchorjs-icons; margin-left: 0.1875em; padding-right: 0.1875em; padding-left: 0.1875em;"></a></h2>
-<p>For benchmarking, the same dataset and features were used to train a 
-Random Forest Regressor and a Logistic Regression model (converted for 
-continuous output). Both models underperformed XGBoost in the 
-chronological setup:</p>
+<h2 data-number="4.2" class="anchored" data-anchor-id="comparison-to-baseline-models"><span class="header-section-number">4.2</span> Comparison to Baseline Models</h2>
+<p>For benchmarking, the same dataset and features were used to train a Random Forest Regressor and a Logistic Regression model (converted for continuous output). Both models underperformed XGBoost in the chronological setup:</p>
 <pre><code>Random Forest:
 R²: 0.143
 RMSE: 1.742
@@ -2096,132 +796,62 @@ R²: 0.021
 RMSE: 1.952</code></pre>
 </section>
 <section id="summary-of-strengths" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="summary-of-strengths"><span class="header-section-number">4.3</span> Summary of Strengths<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#summary-of-strengths" style="font: 1em / 1 anchorjs-icons; margin-left: 0.1875em; padding-right: 0.1875em; padding-left: 0.1875em;"></a></h2>
-<p>Under leakage-free testing, XGBoost outperformed simpler baselines, 
-particularly for events with strong catalysts (large contract value 
-relative to market cap, or alignment with EPS announcements).</p>
+<h2 data-number="4.3" class="anchored" data-anchor-id="summary-of-strengths"><span class="header-section-number">4.3</span> Summary of Strengths</h2>
+<p>Under leakage-free testing, XGBoost outperformed simpler baselines, particularly for events with strong catalysts (large contract value relative to market cap, or alignment with EPS announcements).</p>
 </section>
 <section id="limitations" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="limitations"><span class="header-section-number">4.4</span> Limitations<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#limitations" style="font: 1em / 1 anchorjs-icons; margin-left: 0.1875em; padding-right: 0.1875em; padding-left: 0.1875em;"></a></h2>
+<h2 data-number="4.4" class="anchored" data-anchor-id="limitations"><span class="header-section-number">4.4</span> Limitations</h2>
 <section id="low-overall-r²-in-the-realistic-chronological-setting" class="level3" data-number="4.4.1">
-<h3 data-number="4.4.1" class="anchored" data-anchor-id="low-overall-r²-in-the-realistic-chronological-setting"><span class="header-section-number">4.4.1</span> Low overall R² in the realistic (chronological) setting<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#low-overall-r²-in-the-realistic-chronological-setting" style="font: 1em / 1 anchorjs-icons; margin-left: 0.1875em; padding-right: 0.1875em; padding-left: 0.1875em;"></a></h3>
-<p>Our model’s predictive power dropped sharply without access to future
- data, showing that the market’s short-term reaction is difficult to 
-forecast with the current feature set alone.</p>
+<h3 data-number="4.4.1" class="anchored" data-anchor-id="low-overall-r²-in-the-realistic-chronological-setting"><span class="header-section-number">4.4.1</span> Low overall R² in the realistic (chronological) setting</h3>
+<p>Our model’s predictive power dropped sharply without access to future data, showing that the market’s short-term reaction is difficult to forecast with the current feature set alone.</p>
 </section>
 <section id="occasional-over-prediction-on-illiquid-small-caps" class="level3" data-number="4.4.2">
-<h3 data-number="4.4.2" class="anchored" data-anchor-id="occasional-over-prediction-on-illiquid-small-caps"><span class="header-section-number">4.4.2</span> Occasional over-prediction on illiquid small-caps<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#occasional-over-prediction-on-illiquid-small-caps" style="font: 1em / 1 anchorjs-icons; margin-left: 0.1875em; padding-right: 0.1875em; padding-left: 0.1875em;"></a></h3>
-<p>The results for our analysis returned over-predicted values for 
-companies on the lower end of the market cap spectrum. We did not 
-thoroughly investigate this result due to time constraints, although we 
-believe it may be caused, in part, by the over-representation of 
-companies in the larger-cap categories.</p>
+<h3 data-number="4.4.2" class="anchored" data-anchor-id="occasional-over-prediction-on-illiquid-small-caps"><span class="header-section-number">4.4.2</span> Occasional over-prediction on illiquid small-caps</h3>
+<p>The results for our analysis returned over-predicted values for companies on the lower end of the market cap spectrum. We did not thoroughly investigate this result due to time constraints, although we believe it may be caused, in part, by the over-representation of companies in the larger-cap categories.</p>
 </section>
 <section id="under-prediction-in-certain-sectors" class="level3" data-number="4.4.3">
-<h3 data-number="4.4.3" class="anchored" data-anchor-id="under-prediction-in-certain-sectors"><span class="header-section-number">4.4.3</span> Under-prediction in certain sectors<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#under-prediction-in-certain-sectors" style="font: 1em / 1 anchorjs-icons; margin-left: 0.1875em; padding-right: 0.1875em; padding-left: 0.1875em;"></a></h3>
-<p>Some sectors with inconsistent contract-price relationships (e.g., 
-telecom, energy services) returned results which were under-predicted. 
-The causes for this under-prediction are not immediately clear. We would
- caution the future iterators to address this in future ve### Future 
-Work Future improvements may involve adding features like implied 
-volatility, market beta, sector-specific momentum, or multi-day lag 
-structures to better model the timing and magnitude of post-award price 
-movement.</p>
-<p>Discovering these limitations was humbling. We were close to 
-declaring victory with this project, however when we learned of the 
-shortcomings, we understood this was part of the process. Iterating over
- an extended timeframe is the key to ensuring a model is robust.</p>
+<h3 data-number="4.4.3" class="anchored" data-anchor-id="under-prediction-in-certain-sectors"><span class="header-section-number">4.4.3</span> Under-prediction in certain sectors</h3>
+<p>Some sectors with inconsistent contract-price relationships (e.g., telecom, energy services) returned results which were under-predicted. The causes for this under-prediction are not immediately clear. We would caution the future iterators to address this in future ve### Future Work Future improvements may involve adding features like implied volatility, market beta, sector-specific momentum, or multi-day lag structures to better model the timing and magnitude of post-award price movement.</p>
+<p>Discovering these limitations was humbling. We were close to declaring victory with this project, however when we learned of the shortcomings, we understood this was part of the process. Iterating over an extended timeframe is the key to ensuring a model is robust.</p>
 </section>
 </section>
 </section>
 <section id="conclusions" class="level1" data-number="5">
 <h1 data-number="5"><span class="header-section-number">5</span> Conclusions</h1>
-<p>This project developed a machine learning model to predict short-term
- stock price movement following a government contract award, with 
-particular focus on how this response is modulated by earnings 
-proximity, momentum, and contract characteristics. Using an XGBoost 
-regression model and a Pseudo-Huber loss function, we trained the system
- to estimate the two-day percent change in stock price following a 
-contract event.</p>
-<p>The final model demonstrated a week predictive performance on 
-out-of-sample data, achieving an R² of 0.21, MAE of 0.74, and RMSE of 
-1.64. These metrics indicate that the model did not capture a meaningful
- portion of short-term stock movement. However, with further tuning, the
- model still shows sign of promise.</p>
+<p>This project developed a machine learning model to predict short-term stock price movement following a government contract award, with particular focus on how this response is modulated by earnings proximity, momentum, and contract characteristics. Using an XGBoost regression model and a Pseudo-Huber loss function, we trained the system to estimate the two-day percent change in stock price following a contract event.</p>
+<p>The final model demonstrated a week predictive performance on out-of-sample data, achieving an R² of 0.21, MAE of 0.74, and RMSE of 1.64. These metrics indicate that the model did not capture a meaningful portion of short-term stock movement. However, with further tuning, the model still shows sign of promise.</p>
 <pre><code>R²: 0.2156
 MAE: 0.7368
 RMSE: 1.6384
 Max Error: 21.39
 Median AE: 0.2646</code></pre>
 <section id="ethical-considerations" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="ethical-considerations"><span class="header-section-number">5.1</span> Ethical Considerations<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#ethical-considerations" style="font: 1em / 1 anchorjs-icons; margin-left: 0.1875em; padding-right: 0.1875em; padding-left: 0.1875em;"></a></h2>
-<p>All of our data was ultimately sourced from publicly available 
-resources, allowing us to leverage existing infrastructure without 
-ethical or legal concerns related to proprietary information. In working
- with this data, we aimed to include as much relevant information as 
-possible without compromising accuracy or validity.</p>
+<h2 data-number="5.1" class="anchored" data-anchor-id="ethical-considerations"><span class="header-section-number">5.1</span> Ethical Considerations</h2>
+<p>All of our data was ultimately sourced from publicly available resources, allowing us to leverage existing infrastructure without ethical or legal concerns related to proprietary information. In working with this data, we aimed to include as much relevant information as possible without compromising accuracy or validity.</p>
 <section id="privacy" class="level3" data-number="5.1.1">
-<h3 data-number="5.1.1" class="anchored" data-anchor-id="privacy"><span class="header-section-number">5.1.1</span> Privacy<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#privacy" style="font: 1em / 1 anchorjs-icons; margin-left: 0.1875em; padding-right: 0.1875em; padding-left: 0.1875em;"></a></h3>
-<p>Our ultimate goal was to create a tool that a general audience could 
-operate. For us, this meant needing to keep privacy at the forefront of 
-our priorities. We upheld this priority by successfully obtaining our 
-data from public sources. Because stock market data is inherently public
- and widely disseminated, we did not encounter any privacy concerns or 
-require access to personally identifiable information, as would be the 
-case if a personal API key were needed.</p>
+<h3 data-number="5.1.1" class="anchored" data-anchor-id="privacy"><span class="header-section-number">5.1.1</span> Privacy</h3>
+<p>Our ultimate goal was to create a tool that a general audience could operate. For us, this meant needing to keep privacy at the forefront of our priorities. We upheld this priority by successfully obtaining our data from public sources. Because stock market data is inherently public and widely disseminated, we did not encounter any privacy concerns or require access to personally identifiable information, as would be the case if a personal API key were needed.</p>
 </section>
 <section id="bias" class="level3" data-number="5.1.2">
-<h3 data-number="5.1.2" class="anchored" data-anchor-id="bias"><span class="header-section-number">5.1.2</span> Bias<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#bias" style="font: 1em / 1 anchorjs-icons; margin-left: 0.1875em; padding-right: 0.1875em; padding-left: 0.1875em;"></a></h3>
+<h3 data-number="5.1.2" class="anchored" data-anchor-id="bias"><span class="header-section-number">5.1.2</span> Bias</h3>
 <section id="data-bias" class="level4" data-number="5.1.2.1">
-<h4 data-number="5.1.2.1" class="anchored" data-anchor-id="data-bias"><span class="header-section-number">5.1.2.1</span> Data Bias<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#data-bias" style="font: 1em / 1 anchorjs-icons; margin-left: 0.1875em; padding-right: 0.1875em; padding-left: 0.1875em;"></a></h4>
-<p>When working with financial data, it is important to acknowledge the 
-inherent volatility and sensitivity of markets to external events. 
-Trends and disruptions may occur that cannot be fully explained by data 
-alone. For instance, during the COVID-19 pandemic, the stock market 
-experienced significant and unprecedented shifts that diverged from 
-prior historical patterns. Analyzing data that spans such anomalous 
-periods without accounting for those external factors may lead to 
-misleading conclusions.</p>
+<h4 data-number="5.1.2.1" class="anchored" data-anchor-id="data-bias"><span class="header-section-number">5.1.2.1</span> Data Bias</h4>
+<p>When working with financial data, it is important to acknowledge the inherent volatility and sensitivity of markets to external events. Trends and disruptions may occur that cannot be fully explained by data alone. For instance, during the COVID-19 pandemic, the stock market experienced significant and unprecedented shifts that diverged from prior historical patterns. Analyzing data that spans such anomalous periods without accounting for those external factors may lead to misleading conclusions.</p>
 </section>
 <section id="selection-bias" class="level4" data-number="5.1.2.2">
-<h4 data-number="5.1.2.2" class="anchored" data-anchor-id="selection-bias"><span class="header-section-number">5.1.2.2</span> Selection Bias<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#selection-bias" style="font: 1em / 1 anchorjs-icons; margin-left: 0.1875em; padding-right: 0.1875em; padding-left: 0.1875em;"></a></h4>
-<p>Furthermore, our data is limited to companies listed on the New York 
-Stock Exchange (NYSE) and NASDAQ. While these exchanges represent a 
-significant portion of the U.S. stock market, they are not all 
-encompassing of the United States market. Other exchanges—such as Miami 
-International Holdings, the Long-Term Stock Exchange (LTSE), and 
-Investors Exchange (IEX)—were not included in this analysis, which may 
-limit the ability to generalize our findings. Future advancements of 
-this project should include stock data from a more diverse selection of 
-exchanges.</p>
+<h4 data-number="5.1.2.2" class="anchored" data-anchor-id="selection-bias"><span class="header-section-number">5.1.2.2</span> Selection Bias</h4>
+<p>Furthermore, our data is limited to companies listed on the New York Stock Exchange (NYSE) and NASDAQ. While these exchanges represent a significant portion of the U.S. stock market, they are not all encompassing of the United States market. Other exchanges—such as Miami International Holdings, the Long-Term Stock Exchange (LTSE), and Investors Exchange (IEX)—were not included in this analysis, which may limit the ability to generalize our findings. Future advancements of this project should include stock data from a more diverse selection of exchanges.</p>
 </section>
 <section id="outside-political-impact" class="level4" data-number="5.1.2.3">
-<h4 data-number="5.1.2.3" class="anchored" data-anchor-id="outside-political-impact"><span class="header-section-number">5.1.2.3</span> Outside Political Impact<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#outside-political-impact" style="font: 1em / 1 anchorjs-icons; margin-left: 0.1875em; padding-right: 0.1875em; padding-left: 0.1875em;"></a></h4>
-<p>Depending on the political party in power at any given time, 
-government contracts could be distributed differently. This project did 
-not make a specific effort to root out this bias, although we strongly 
-recommend that the next iteration includes a flag indicating the 
-political party in the White House and each chamber of Congress. It’s 
-not clear what kind of impact this could have, but it could help control
- for external influences of bias.</p>
+<h4 data-number="5.1.2.3" class="anchored" data-anchor-id="outside-political-impact"><span class="header-section-number">5.1.2.3</span> Outside Political Impact</h4>
+<p>Depending on the political party in power at any given time, government contracts could be distributed differently. This project did not make a specific effort to root out this bias, although we strongly recommend that the next iteration includes a flag indicating the political party in the White House and each chamber of Congress. It’s not clear what kind of impact this could have, but it could help control for external influences of bias.</p>
 </section>
 </section>
 </section>
 <section id="closing" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="closing"><span class="header-section-number">5.2</span> Closing<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#closing" style="font: 1em / 1 anchorjs-icons; margin-left: 0.1875em; padding-right: 0.1875em; padding-left: 0.1875em;"></a></h2>
-<p>Our goal was ambitious: to create a universally accessible tool 
-capable of accurately predicting stock outcomes—a truly groundbreaking 
-undertaking. While we didn’t fully achieve that vision, we’ve built a 
-solid foundation. The next team will be able to hit the ground running, 
-armed with our research, infrastructure, and clear next steps to breathe
- new life into the project.</p>
-<p>Now more than ever, transparency at the intersection of government 
-and financial markets is essential. Americans deserve a political system
- that serves the public good, not personal financial gain. It is 
-imperative to take meaningful action to level the playing field for 
-those without streamlined access to government contract information. We 
-look forward to the day when this model operates effectively and 
-efficiently, advancing both accountability and opportunity.</p>
+<h2 data-number="5.2" class="anchored" data-anchor-id="closing"><span class="header-section-number">5.2</span> Closing</h2>
+<p>Our goal was ambitious: to create a universally accessible tool capable of accurately predicting stock outcomes—a truly groundbreaking undertaking. While we didn’t fully achieve that vision, we’ve built a solid foundation. The next team will be able to hit the ground running, armed with our research, infrastructure, and clear next steps to breathe new life into the project.</p>
+<p>Now more than ever, transparency at the intersection of government and financial markets is essential. Americans deserve a political system that serves the public good, not personal financial gain. It is imperative to take meaningful action to level the playing field for those without streamlined access to government contract information. We look forward to the day when this model operates effectively and efficiently, advancing both accountability and opportunity.</p>
 </section>
 </section>
 <section id="references" class="level1" data-number="6">
@@ -2234,7 +864,7 @@ efficiently, advancing both accountability and opportunity.</p>
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading" id="references-1">References<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#references-1" style="font: 1em / 1 anchorjs-icons; margin-left: 0.1875em; padding-right: 0.1875em; padding-left: 0.1875em;"></a></h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-Bookmap2025" class="csl-entry" role="listitem">
 Bookmap. 2025. <span>“Investing in Defense Stocks: What Traders Should Know in 2025.”</span> 2025. <a href="https://bookmap.com/blog/investing-in-defense-stocks-what-traders-should-know-in-2025">https://bookmap.com/blog/investing-in-defense-stocks-what-traders-should-know-in-2025</a>.
 </div>
@@ -2245,10 +875,7 @@ Charles Schwab. 2024. <span>“How Active Traders Approach and Track the Market.
 Chen, Tiangi, and Carlos Guestrin. 2016. <span>“XGBoost: A Scalable Tree Boosting System.”</span> <em>Association for Computing Machinery</em>, August, 785–94. <a href="https://doi.org/10.1145/2939672.2939785">https://doi.org/10.1145/2939672.2939785</a>.
 </div>
 <div id="ref-Ekins2025" class="csl-entry" role="listitem">
-Ekins, Emily, and Hunter Johnson. 2025. <span>“Americans Say the Federal Government Wastes 59 Cents on the Dollar.”</span> 2025. <a href="https://www.cato.org/blog/americans-say-federal-govt-wastes-59-cents-dollar#:~:text=89%20Percent%20Favor%20Auditing%20All,are%20wasted%20by%20the%20government?%E2%80%9D">https://
-www.cato.org/blog/americans-say-federal-govt-wastes-59-cents-
-dollar#:~:text=89%20Percent%20Favor%20Auditing%20All,are%20wasted%20by%20the%20government?
-%E2%80%9D</a>.
+Ekins, Emily, and Hunter Johnson. 2025. <span>“Americans Say the Federal Government Wastes 59 Cents on the Dollar.”</span> 2025. <a href="https://www.cato.org/blog/americans-say-federal-govt-wastes-59-cents-dollar#:~:text=89%20Percent%20Favor%20Auditing%20All,are%20wasted%20by%20the%20government?%E2%80%9D">https://www.cato.org/blog/americans-say-federal-govt-wastes-59-cents-dollar#:~:text=89%20Percent%20Favor%20Auditing%20All,are%20wasted%20by%20the%20government?%E2%80%9D</a>.
 </div>
 <div id="ref-Elmerraji2024" class="csl-entry" role="listitem">
 Elmerraji, Jonas. 2024. <span>“5 Must-Have Metrics for Value Investors.”</span> 2024. <a href="https://www.investopedia.com/articles/fundamental-analysis/09/five-must-have-metrics-value-investors.asp">https://www.investopedia.com/articles/fundamental-analysis/09/five-must-have-metrics-value-investors.asp</a>.
@@ -2704,4 +1331,4 @@ Elmerraji, Jonas. 2024. <span>“5 Must-Have Metrics for Value Investors.”</sp
 
 
 
-<a class="top-right quarto-color-scheme-toggle" href=""><i class="bi"></i></a></body></html>
+</body></html>
