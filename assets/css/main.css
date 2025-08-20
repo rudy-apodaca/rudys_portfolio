@@ -3440,15 +3440,42 @@ section#three ul.labeled-icons li a {
 	list-style: disc outside;
 	margin: .25rem
   
+	/* === Featured Project: proportional CTAs + single-line bullets === */
 
-/* Featured: keep bullets inside so they don't overlap the left column */
-#featured .featured-steps{
-	list-style: disc inside;   /* was: disc outside */
-	margin: .25rem 0 0 0;
-	padding-left: .25rem;      /* tiny breathing room so text doesn’t touch dot */
+/* Centered, wide, and SAME height for both buttons */
+#featured .featured-actions{
+	display:flex;
+	flex-direction:column;      /* stacked under the image */
+	align-items:center;
+	gap:.7rem;
+	margin-top:.9rem;
+	width:100%;
+  }
+  
+  #featured .featured-actions .button{
+	display:inline-flex;         /* center text perfectly */
+	align-items:center;
+	justify-content:center;
+	width: clamp(300px, 90%, 560px);
+	height: 56px;                /* <-- uniform height */
+	padding: 0 1.25rem;          /* vertical padding handled by height */
+	line-height: 1.1;            /* prevents odd line-height differences */
+	border-radius: 8px;
+  }
+  
+  /* (Optional) a tiny shadow on the primary to match presence */
+  #featured .featured-actions .button.primary{
+	box-shadow: 0 2px 0 rgba(0,0,0,.08);
+  }
+  
+  /* Bullets: keep each item to a single line */
+  #featured .featured-steps{
+	list-style: disc outside;
+	margin: .25rem 0 0 1.2rem;
   }
   #featured .featured-steps li{
-	white-space: nowrap;       /* keep them one line each as you wanted */
+	white-space: nowrap;         /* no wrapping */
 	margin: 0 0 .4rem;
+	font-size: 0.98em;           /* slight downsize for fit */
   }
   
