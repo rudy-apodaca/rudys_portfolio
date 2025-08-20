@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>What We Watchin Dawg?</title>
+  <!-- Modern font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #1e1a17;          /* dark warm brown (not pure black) */
+      --panel: #27221f;       /* panel brown */
+      --muted: #c8bfb6;       /* beige gray */
+      --text: #f6f2ed;        /* off-white */
+      --brand: #d48c56;       /* earthy orange-brown */
+      --accent: #8f6f44;      /* muted olive brown */
+      --ok: #bfa373;          /* khaki */
+      --warn: #e6c87c;        /* sand */
+      --bad: #d48a7b;         /* clay rose */
+      --card: #241f1c;        /* card background brown */
+      --chip: #302a27;        /* chip background */
+      --border: #3a332f;      /* border */
+      --input: #1a1614;       /* input bg */
+      --ring: #5a4636;        /* focus ring */
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;height:100%;font-family:Inter, system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif;background:var(--bg);color:var(--text)}
+    header{position:sticky;top:0;background:linear-gradient(180deg,var(--panel),rgba(30,25,22,0.7));border-bottom:1px solid var(--border);z-index:10}
+    .wrap{max-width:1200px;margin:0 auto;padding:16px}
+    h1{font-size:22px;margin:0 0 8px}
+    .sub{color:var(--muted);font-size:12px}
+    .quoteBox{margin-top:10px;background:rgba(212,140,86,0.08);border:1px solid var(--border);border-radius:12px;padding:10px;font-size:14px;line-height:1.45}
+    .quoteBox .who{display:block;color:var(--muted);font-size:12px;margin-top:6px}
+
+    .grid{display:grid;grid-template-columns:300px 1fr;gap:16px}
+    @media (max-width: 920px){.grid{grid-template-columns:1fr}}
+
+    /* Controls */
+    .panel{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:14px;position:sticky;top:76px;max-height:calc(100dvh - 92px);overflow:auto}
+    .panel h3{margin:10px 0 8px;font-size:14px;color:#e6ddd7}
+    .panel label{display:block;font-size:12px;color:var(--muted);margin:10px 0 6px}
+    .panel input[type="text"], .panel select, .panel input[type="number"], .panel input[type="range"]{width:100%;background:var(--input);color:var(--text);border:1px solid var(--border);border-radius:10px;padding:10px}
+    .panel select{padding:8px}
+    .panel input:focus, .panel select:focus, textarea:focus{outline:2px solid var(--ring); outline-offset:0}
+    .row{display:flex;gap:8px;align-items:center}
+    .controls{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+    button{background:#2a231f;border:1px solid var(--border);color:var(--text);padding:9px 12px;border-radius:10px;cursor:pointer}
+    button.primary{background:linear-gradient(180deg,#5a4636,#3a2e24);border-color:#5a4636}
+    button:hover{filter:brightness(1.08)}
+    .small{font-size:12px;color:var(--muted)}
+    .kbd{border:1px solid var(--border);background:#1a1614;border-bottom-width:2px;border-right-width:2px;padding:2px 5px;border-radius:6px;font-size:11px}
+
+    /* List */
+    .list{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
+    .thumb{width:100%;aspect-ratio:16/9;background:#1a1614;object-fit:cover}
+    .card-body{padding:14px;display:flex;flex-direction:column;gap:10px}
+    .title{font-weight:650;letter-spacing:.2px}
+    .muted{color:var(--muted);font-size:12px}
+    .badges{display:flex;gap:6px;flex-wrap:wrap}
+    .badge{background:#2a231f;border:1px solid var(--border);padding:4px 7px;border-radius:999px;font-size:11px;color:#e6ddd7}
+    .split{display:flex;justify-content:space-between;align-items:center;gap:8px}
+    .section{border-top:1px dashed var(--border);padding-top:10px;margin-top:4px}
+    .stack{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+    .stack-1{display:grid;grid-template-columns:1fr;gap:8px}
+
+    .watch-toggle{display:flex;align-items:center;gap:6px;font-size:12px}
+    .watch-toggle input{accent-color:var(--brand)}
+
+    .field{display:flex;flex-direction:column;gap:6px}
+    .field label{font-size:11px;color:var(--muted)}
+    .field input[type="date"], .field select, .field input[type="number"], .field textarea{width:100%;background:var(--input);color:var(--text);border:1px solid var(--border);border-radius:10px;padding:9px}
+
+    textarea{min-height:70px;resize:vertical}
+
+    .footer{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;border-top:1px solid var(--border);gap:8px}
+    .pill{padding:4px 8px;border-radius:999px;border:1px solid var(--border);color:var(--muted);font-size:12px}
+    .pill.ok{color:#bfa373;border-color:#7a6a3d;background:rgba(191,163,115,.07)}
+    .pill.warn{color:#e6c87c;border-color:#7a5b0f;background:rgba(230,200,124,.07)}
+    .pill.bad{color:#d48a7b;border-color:#7a3c2f;background:rgba(212,138,123,.07)}
+    .empty{padding:24px;text-align:center;color:var(--muted)}
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <h1>🎬 🍿Movie Helper</h1>
+      <div class="sub"> What do you want to watch?</div>
+      <div id="quoteBox" class="quoteBox" hidden></div>
+    </div>
+  </header>
+
+  <main class="wrap grid">
+    <!-- FILTERS / TOOLS -->
+    <aside class="panel" aria-label="Filters and tools">
+      <h3>Data</h3>
+      <div class="controls">
+        <label class="file">
+          <input id="csvFile" type="file" accept=".csv" hidden />
+          <button class="primary" id="btnLoadCsv">📥 Load CSV</button>
+        </label>
+        <button id="btnSample">📚 Load Sample</button>
+        <button id="btnExport">💾 Export Notes</button>
+        <label class="file">
+          <input id="jsonFile" type="file" accept="application/json" hidden />
+          <button id="btnImport">📤 Import Notes</button>
+        </label>
+        <button id="btnReset">🧹 Reset Filters</button>
+      </div>
+      <p class="small">:)</p>
+
+      <h3>Search</h3>
+      <label for="q">Title / Description</label>
+      <input id="q" type="text" placeholder="e.g., noir heist" />
+
+      <h3>Filters</h3>
+      <label for="genre">Genre</label>
+      <select id="genre" multiple size="6" aria-label="Genre filter"></select>
+
+      <label for="cert">Content Rating</label>
+      <select id="cert" multiple size="5" aria-label="Content rating filter"></select>
+
+      <label>IMDb/User Rating ≥ <span id="minRatingOut">0</span></label>
+      <input id="minRating" type="range" min="0" max="10" step="0.5" value="0" />
+
+      <label for="maxMins">Max Duration (mins)</label>
+      <input id="maxMins" type="number" min="0" placeholder="e.g., 140" />
+
+      <div class="row" style="margin-top:10px">
+        <input id="unwatchedOnly" type="checkbox" />
+        <label for="unwatchedOnly" style="margin:0">Unwatched only</label>
+      </div>
+
+      <h3>Sort</h3>
+      <div class="row">
+        <select id="sortBy">
+          <option value="title">Title (A→Z)</option>
+          <option value="rating">Rating (high→low)</option>
+          <option value="duration_minutes">Duration (short→long)</option>
+          <option value="rating_count"># Ratings (high→low)</option>
+          <option value="_rank">Original Rank</option>
+        </select>
+        <select id="sortDir">
+          <option value="asc">Asc</option>
+          <option value="desc">Desc</option>
+        </select>
+      </div>
+
+      <h3>Reviewers</h3>
+      <label for="meName">Your name</label>
+      <input id="meName" type="text" placeholder="R Dawg" />
+      <label for="ptName">Partner name</label>
+      <input id="ptName" type="text" placeholder="K Dawg" />
+      <p class="small">Names are just labels in the UI and saved with your notes.</p>
+
+      
+    </aside>
+
+    <!-- RESULTS -->
+    <section>
+      <div class="split" style="margin-bottom:8px">
+        <div class="muted" id="resultMeta">0 movies</div>
+        <div id="activeFilters" class="muted"></div>
+      </div>
+      <div id="list" class="list" role="list"></div>
+      <div id="empty" class="empty" hidden>Load your CSV or the sample to begin.</div>
+    </section>
+  </main>
+
+  <script>
+    /*************************
+     * Quote Bank (1 per title where possible)
+     *************************/
+    const QUOTE_BANK = [
+      {movie:'Parasite', year:2019, character:'Ki-woo', quote:'This is so metaphorical!'},
+      {movie:'Mulholland Drive', year:2001, character:'Emcee', quote:'Silencio.'},
+      {movie:'There Will Be Blood', year:2007, character:'Daniel Plainview', quote:'I drink your milkshake!'},
+      {movie:'In the Mood for Love', year:2000, character:'Su Li-zhen', quote:"We won’t be like them."},
+      {movie:'Moonlight', year:2016, character:'Juan', quote:"At some point you gotta decide for yourself who you’re going to be."},
+      {movie:'No Country for Old Men', year:2007, character:'Anton Chigurh', quote:'What\'s the most you ever lost on a coin toss?'},
+      {movie:'Eternal Sunshine of the Spotless Mind', year:2004, character:'Clementine', quote:'Meet me in Montauk.'},
+      {movie:'Get Out', year:2017, character:'Dean Armitage', quote:'I would\'ve voted for Obama for a third term if I could.'},
+      {movie:'Spirited Away', year:2001, character:'Zeniba', quote:'Once you’ve met someone, you never really forget them.'},
+      {movie:'The Social Network', year:2010, character:'Mark Zuckerberg', quote:"If you guys were the inventors of Facebook, you\'d have invented Facebook."},
+      {movie:'Mad Max: Fury Road', year:2015, character:'Nux', quote:'What a lovely day!'},
+      {movie:'The Zone of Interest', year:2023, character:'Rudolf Höss', quote:'We’ll build a bigger house.'},
+      {movie:'Children of Men', year:2006, character:'Jasper', quote:'Pull my finger.'},
+      {movie:'Inglourious Basterds', year:2009, character:'Hans Landa', quote:"That\'s a bingo!"},
+      {movie:'City of God', year:2002, character:'Narrator', quote:'If you run, the beast catches you; if you stay, the beast eats you.'},
+      {movie:'Crouching Tiger, Hidden Dragon', year:2000, character:'Jen', quote:'I would rather be a ghost, drifting by your side... as a condemned soul, than enter heaven without you.'},
+      {movie:'Brokeback Mountain', year:2005, character:'Jack Twist', quote:'I wish I knew how to quit you.'},
+      {movie:'Y tu mamá también', year:2001, character:'Narrator', quote:'Life is like the surf—so give yourself away like the sea.'},
+      {movie:'Zodiac', year:2007, character:'Robert Graysmith', quote:"I need to know who he is. I need to look him in the eye."},
+      {movie:'The Wolf of Wall Street', year:2013, character:'Jordan Belfort', quote:"I\'m not leaving!"},
+      {movie:'The Royal Tenenbaums', year:2001, character:'Margot', quote:"I think we\'re just gonna have to be secretly in love with each other and leave it at that."},
+      {movie:'The Grand Budapest Hotel', year:2014, character:'M. Gustave', quote:'There are still faint glimmers of civilization left in this barbaric slaughterhouse that was once known as humanity.'},
+      {movie:'Boyhood', year:2014, character:'Nicole', quote:'You know how everyone’s always saying “seize the moment”? I think it’s the other way around—the moment seizes us.'},
+      {movie:'Her', year:2013, character:'Samantha', quote:"The heart\'s not like a box that gets filled up—it expands the more you love."},
+      {movie:'Phantom Thread', year:2017, character:'Reynolds Woodcock', quote:'Kiss me, my girl, before I’m sick.'},
+      {movie:'Anatomy of a Fall', year:2023, character:'Sandra Voyter', quote:'The truth is complicated.'},
+      {movie:'Adaptation.', year:2002, character:'Donald Kaufman', quote:'You are what you love, not what loves you.'},
+      {movie:'The Dark Knight', year:2008, character:'The Joker', quote:'Why so serious?'},
+      {movie:'Arrival', year:2016, character:'Louise Banks', quote:'If you could see your life from start to finish, would you change things?'},
+      {movie:'Lost in Translation', year:2003, character:'Charlotte', quote:"Let\'s never come here again because it would never be as much fun."},
+      {movie:'The Departed', year:2006, character:'Dignam', quote:"I\'m the guy who does his job. You must be the other guy."},
+      {movie:'Bridesmaids', year:2011, character:'Annie', quote:'Help me, I’m poor.'},
+      {movie:'A Separation', year:2011, character:'Nader', quote:'I didn’t lie. The truth is complicated.'},
+      {movie:'WALL·E', year:2008, character:'Captain', quote:"I don\'t want to survive. I want to live!"},
+      {movie:'A Prophet', year:2009, character:'Malik', quote:'I belong to no one.'},
+      {movie:'A Serious Man', year:2009, character:'Rabbi Marshak', quote:'Accept the mystery.'},
+      {movie:'Call Me by Your Name', year:2017, character:'Mr. Perlman', quote:'We rip out so much of ourselves to be cured of things faster than we should.'},
+      {movie:'Portrait of a Lady on Fire', year:2019, character:'Marianne', quote:'Don’t regret. Remember.'},
+      {movie:'Lady Bird', year:2017, character:'Lady Bird', quote:'What if this is the best version of me?'},
+      {movie:'Yi Yi', year:2000, character:'Yang-Yang', quote:"You can\'t see what I see and I can\'t see what you see."},
+      {movie:'Amélie', year:2001, character:'Narrator', quote:'Times are hard for dreamers.'},
+      {movie:'The Master', year:2012, character:'Lancaster Dodd', quote:'I am a writer, a doctor, a nuclear physicist, a theoretical philosopher… but above all I am a man.'},
+      {movie:'Oldboy', year:2003, character:'Oh Dae-su', quote:'Laugh and the world laughs with you. Weep, and you weep alone.'},
+      {movie:'Once Upon a Time... in Hollywood', year:2019, character:'Cliff Booth', quote:"You\'re Rick f***ing Dalton. Don\'t you forget it."},
+      {movie:'Moneyball', year:2011, character:'Billy Beane', quote:'How can you not be romantic about baseball?'},
+      {movie:'Roma', year:2018, character:'Sofía', quote:'We are alone. No matter what they tell you, women are always alone.'},
+      {movie:'Almost Famous', year:2000, character:'Penny Lane', quote:"It\'s all happening!"},
+      {movie:'The Lives of Others', year:2006, character:'Wiesler', quote:'No, it’s for me.'},
+      {movie:'Before Sunset', year:2004, character:'Céline', quote:'Baby, you are gonna miss that plane. – I know.'},
+      {movie:'Up', year:2009, character:'Ellie (letter)', quote:'Thanks for the adventure—now go have a new one.'},
+      {movie:'12 Years a Slave', year:2013, character:'Solomon Northup', quote:'I will not fall into despair! I will keep myself hardy until freedom is opportune!'},
+      {movie:'The Favourite', year:2018, character:'Queen Anne', quote:'I am capable of much unpleasantness.'},
+      {movie:'Borat', year:2006, character:'Borat', quote:'Very nice!'},
+      {movie:"Pan's Labyrinth", year:2006, character:'Captain Vidal', quote:'If you have to choose, save the baby. He will carry my name.'},
+      {movie:'Inception', year:2010, character:'Eames', quote:"You mustn\'t be afraid to dream a little bigger, darling."},
+      {movie:'Punch-Drunk Love', year:2002, character:'Barry Egan', quote:'I have a love in my life. It makes me stronger than anything you can imagine.'},
+      {movie:'Best in Show', year:2000, character:'Meg Swan', quote:'We met at Starbucks. Not at the same Starbucks, but we saw each other at different Starbucks across the street.'},
+      {movie:'Uncut Gems', year:2019, character:'Howard Ratner', quote:'This is how I win.'},
+      {movie:'Toni Erdmann', year:2016, character:'Winfried', quote:'Are you human?'},
+      {movie:'Whiplash', year:2014, character:'Terence Fletcher', quote:'Not my tempo.'},
+      {movie:'Kill Bill: Vol. 1', year:2003, character:'The Bride', quote:'Wiggle your big toe.'},
+      {movie:'Memento', year:2000, character:'Leonard Shelby', quote:'I have to believe in a world outside my own mind.'},
+      {movie:'Little Miss Sunshine', year:2006, character:'Dwayne', quote:'Do what you love, and screw the rest.'},
+      {movie:'Gone Girl', year:2014, character:'Amy Dunne', quote:"I\'m so much happier now that I\'m dead."},
+      {movie:'Oppenheimer', year:2023, character:'J. Robert Oppenheimer', quote:'Now I am become Death, the destroyer of worlds.'},
+      {movie:'Spotlight', year:2015, character:'Mike Rezendes', quote:'They knew, and they let it happen—to kids.'},
+      {movie:'Tár', year:2022, character:'Lydia Tár', quote:'Time is the thing. Time is the essential piece of interpretation.'},
+      {movie:'The Hurt Locker', year:2008, character:'Title Card', quote:'War is a drug.'},
+      {movie:'Under the Skin', year:2013, character:'The Woman', quote:'Do you think I’m pretty?'},
+      {movie:'Let the Right One In', year:2008, character:'Eli', quote:"I\'m not a girl."},
+      {movie:"Ocean's Eleven", year:2001, character:'Danny Ocean', quote:"You\'re either in or you\'re out. Right now."},
+      {movie:'Carol', year:2015, character:'Carol Aird', quote:'What a strange girl you are. Flung out of space.'},
+      {movie:'Ratatouille', year:2007, character:'Gusteau', quote:'Anyone can cook.'},
+      {movie:'The Florida Project', year:2017, character:'Moonee', quote:"You know why this is my favorite tree? Because it\'s tipped over but it\'s still growing."},
+      {movie:'Amour', year:2012, character:'Anne', quote:'Promise me you will never take me back to the hospital.'},
+      {movie:'O Brother, Where Art Thou?', year:2000, character:'Everett', quote:"Damn, we\'re in a tight spot!"},
+      {movie:'Everything Everywhere All at Once', year:2022, character:'Waymond Wang', quote:'In another life, I would have really liked just doing laundry and taxes with you.'},
+      {movie:'Aftersun', year:2022, character:'Sophie', quote:'I can’t remember exactly. But I can feel it.'},
+      {movie:'The Tree of Life', year:2011, character:'Mother', quote:'The only way to be happy is to love.'},
+      {movie:'Volver', year:2006, character:'Raimunda', quote:'I killed him.'},
+      {movie:'Black Swan', year:2010, character:'Nina', quote:'I was perfect.'},
+      {movie:'The Act of Killing', year:2012, character:'Anwar Congo', quote:'For me, this is like I’m entering my own past.'},
+      {movie:'Inside Llewyn Davis', year:2013, character:'Llewyn Davis', quote:"If it was never new and it never gets old, it\'s a folk song."},
+      {movie:'Melancholia', year:2011, character:'Justine', quote:'The Earth is evil. We don’t need to grieve for it.'},
+      {movie:'Anchorman: The Legend of Ron Burgundy', year:2004, character:'Ron Burgundy', quote:"I\'m kind of a big deal."},
+      {movie:'Past Lives', year:2023, character:'Nora', quote:'If two people walk past each other and their clothes accidentally touch, that’s in-yun.'},
+      {movie:'The Lord of the Rings: The Fellowship of the Ring', year:2001, character:'Gandalf', quote:'All we have to decide is what to do with the time that is given to us.'},
+      {movie:'The Gleaners & I', year:2000, character:'Agnès Varda', quote:'I am a gleaner.'},
+      {movie:'Interstellar', year:2014, character:'Amelia Brand', quote:'Love is the one thing that transcends time and space.'},
+      {movie:'Frances Ha', year:2012, character:'Frances', quote:"I\'m not a real person yet."},
+      {movie:'Fish Tank', year:2009, character:'Mia', quote:'You ain’t no dancer.'},
+      {movie:'Gladiator', year:2000, character:'Maximus', quote:'Are you not entertained?'},
+      {movie:'Michael Clayton', year:2007, character:'Arthur Edens', quote:'I am Shiva, the god of death.'},
+      {movie:'Minority Report', year:2002, character:'John Anderton', quote:"It\'s not the future if you can stop it."},
+      {movie:'The Worst Person in the World', year:2021, character:'Julie', quote:'I feel like I’m a spectator in my own life.'},
+      {movie:'Black Panther', year:2018, character:'Killmonger', quote:'Bury me in the ocean with my ancestors who jumped from ships, because they knew death was better than bondage.'},
+      {movie:'Gravity', year:2013, character:'Ryan Stone', quote:'I hate space.'},
+      {movie:'Grizzly Man', year:2005, character:'Werner Herzog (narration)', quote:'I believe the common denominator of the universe is not harmony, but chaos, hostility, and murder.'},
+      {movie:'Memories of Murder', year:2003, character:'Park Doo-man', quote:'He looked ordinary.'},
+      {movie:'Superbad', year:2007, character:'Fogell', quote:'I am McLovin!'}
+    ];
+
+    function renderQuote(){
+      const box = document.getElementById('quoteBox');
+      const pool = QUOTE_BANK.filter(q => q && q.quote);
+      if(!pool.length){ box.hidden = true; return; }
+      const q = pool[Math.floor(Math.random()*pool.length)];
+      box.innerHTML = `“${q.quote}”<span class="who">— ${q.character}, <i>${q.movie}</i> (${q.year})</span>`;
+      box.hidden = false;
+    }
+
+    /*************************
+     * Utilities & State
+     *************************/
+    const $ = sel => document.querySelector(sel);
+    const $$ = sel => Array.from(document.querySelectorAll(sel));
+
+    const STORAGE_NOTES = 'movie_notes_v3';
+    const STORAGE_SETTINGS = 'movie_ui_settings_v1';
+
+    let DATA = []; // current dataset
+    let NOTES = loadLocal(STORAGE_NOTES, {});
+    let SETTINGS = loadLocal(STORAGE_SETTINGS, { meName:'R Dawg', ptName:'K Dawg' });
+
+    function saveLocal(key, val){ localStorage.setItem(key, JSON.stringify(val)); }
+    function loadLocal(key, fallback){ try{ return JSON.parse(localStorage.getItem(key)) ?? fallback } catch { return fallback } }
+
+    function normKey(s){ return String(s||'').trim().toLowerCase(); }
+
+    // Column access with fallbacks
+    function col(row, name){
+      const m = {
+        title:['title','name'],
+        genre:['genre','genres'],
+        rating:['rating','imdb_rating','score'],
+        rating_count:['rating_count','votes','imdb_votes'],
+        content_rating:['content_rating','certificate','mpaa'],
+        duration_minutes:['duration_minutes','runtime','minutes','duration'],
+        url:['url','link'],
+        image:['image','poster'],
+        description:['description','plot','overview'],
+        wikipedia:['wikipedia','wikipedia_url','wiki'],
+        director:['director','directed_by']
+      };
+      const keys = m[name] || [name];
+      for(const k of keys){ if(k in row) return row[k]; }
+      return undefined;
+    }
+
+    function coerceNumber(x){
+      if(x === undefined || x === null) return undefined;
+      const n = Number(String(x).replace(/[,\s]/g,''));
+      return Number.isFinite(n) ? n : undefined;
+    }
+
+    /*************************
+     * Data Loading
+     *************************/
+    const sampleCSV = `title,genre,rating,rating_count,content_rating,duration_minutes,url,image,description,wikipedia,director\nThe Matrix,Action|Sci-Fi,8.7,2000000,R,136,https://www.imdb.com/title/tt0133093/,https://m.media-amazon.com/images/M/MV5BNzQzOTk3NjAtNDQzZi00Y2E5LTg0YjAtNzYyZDE0MDU4ZDU5XkEyXkFqcGc@._V1_.jpg,What is real?,https://en.wikipedia.org/wiki/The_Matrix,The Wachowskis\nThe Grand Budapest Hotel,Comedy|Drama,8.1,900000,R,99,https://www.imdb.com/title/tt2278388/,,Wes Anderson's pastel caper.,https://en.wikipedia.org/wiki/The_Grand_Budapest_Hotel,Wes Anderson\nParasite,Thriller|Drama,8.5,1000000,R,132,https://www.imdb.com/title/tt6751668/,,Class collision thriller.,https://en.wikipedia.org/wiki/Parasite_(film),Bong Joon-ho`;
+
+    function parseCSV(text){
+      const res = Papa.parse(text, { header:true, skipEmptyLines:true, transformHeader: h => normKey(h) });
+      if(res.errors?.length){ console.warn('CSV parse issues', res.errors); }
+      const rows = res.data.map((r,i) => ({
+        ...r,
+        rating: coerceNumber(col(r,'rating')),
+        rating_count: coerceNumber(col(r,'rating_count')),
+        duration_minutes: coerceNumber(col(r,'duration_minutes')),
+        _rank: i+1 // original index rank from CSV
+      }));
+      return rows;
+    }
+
+    function loadDataFromCSV(text){
+      DATA = parseCSV(text);
+      hydrateFilters();
+      render();
+    }
+
+    /*************************
+     * Filters / Sorting
+     *************************/
+    function uniqueSorted(values){
+      return [...new Set(values.filter(Boolean).map(v => String(v)))].sort((a,b)=>a.localeCompare(b));
+    }
+
+    function hydrateFilters(){
+      const genres = uniqueSorted(DATA.flatMap(r => String(col(r,'genre')||'').split(/\s*\|\s*|,\s*/).filter(Boolean)));
+      const certs = uniqueSorted(DATA.map(r => col(r,'content_rating')));
+      $('#genre').innerHTML = genres.map(g => `<option value="${g}">${g}</option>`).join('');
+      $('#cert').innerHTML = certs.map(c => `<option value="${c}">${c}</option>`).join('');
+    }
+
+    function activeFilterText(){
+      const chips = [];
+      const q = $('#q').value.trim(); if(q) chips.push(`q:\"${q}\"`);
+      const gs = [...$('#genre').selectedOptions].map(o=>o.value); if(gs.length) chips.push(`genre:${gs.length}`);
+      const cs = [...$('#cert').selectedOptions].map(o=>o.value); if(cs.length) chips.push(`rate:${cs.length}`);
+      const minR = Number($('#minRating').value||0); if(minR>0) chips.push(`≥${minR}`);
+      const maxM = Number($('#maxMins').value||0); if(maxM>0) chips.push(`≤${maxM}m`);
+      if($('#unwatchedOnly').checked) chips.push('unwatched');
+      return chips.join(' · ');
+    }
+
+    function applyFilters(rows){
+      const q = $('#q').value.trim().toLowerCase();
+      const genres = new Set([...$('#genre').selectedOptions].map(o=>o.value));
+      const certs = new Set([...$('#cert').selectedOptions].map(o=>o.value));
+      const minR = Number($('#minRating').value||0);
+      const maxM = Number($('#maxMins').value||0);
+      const unwatchedOnly = $('#unwatchedOnly').checked;
+
+      return rows.filter(r => {
+        const title = String(col(r,'title')||'');
+        if(q){
+          const hay = `${title} ${(col(r,'description')||'')}`.toLowerCase();
+          if(!hay.includes(q)) return false;
+        }
+        if(genres.size){
+          const gs = String(col(r,'genre')||'').split(/\s*\|\s*|,\s*/).filter(Boolean);
+          if(!gs.some(g => genres.has(g))) return false;
+        }
+        if(certs.size){
+          const c = col(r,'content_rating'); if(!certs.has(String(c))) return false;
+        }
+        if(minR>0){ const r0 = Number(col(r,'rating'))||0; if(r0 < minR) return false; }
+        if(maxM>0){ const d = Number(col(r,'duration_minutes'))||9999; if(d > maxM) return false; }
+        if(unwatchedOnly){
+          const key = normKey(title); const note = NOTES[key];
+          if(note?.me?.watched || note?.pt?.watched) return false;
+        }
+        return true;
+      });
+    }
+
+    function sortRows(rows){
+      const by = $('#sortBy').value; const dir = $('#sortDir').value;
+      const mult = dir==='desc' ? -1 : 1;
+      return rows.slice().sort((a,b)=>{
+        let av = by==='title'? col(a,by) : (by==='_rank'? a._rank : col(a,by));
+        let bv = by==='title'? col(b,by) : (by==='_rank'? b._rank : col(b,by));
+        if(by==='title') return (av||'').localeCompare(bv||'') * mult;
+        av = Number(av)||0; bv = Number(bv)||0;
+        return (av - bv) * mult;
+      });
+    }
+
+    /*************************
+     * Notes (localStorage)
+     *************************/
+    function getNoteKey(row){ return normKey(col(row,'title')); }
+
+    // Include platform + watchedOn (date) per movie (shared), keep per-person flags/ratings/reviews
+    function readNote(key){ return NOTES[key] || { me:{watched:false, rating:"", review:""}, pt:{watched:false, rating:"", review:""}, platform:"", watchedOn:"", updatedAt:null } }
+
+    function writeNote(key, obj){
+      NOTES[key] = obj; saveLocal(STORAGE_NOTES, NOTES);
+    }
+
+    /*************************
+     * Rendering
+     *************************/
+    const PLATFORMS = ["Netflix","Prime Video","Hulu","Max","Disney+","Apple TV+","Peacock","Paramount+","Kanopy","Criterion","Theaters","Blu‑ray","Other"];
+
+    function wikiHref(row){
+      const w = col(row,'wikipedia');
+      if(w) return String(w);
+      const title = encodeURIComponent(String(col(row,'title')||'').replaceAll(' ','_'));
+      return `https://en.wikipedia.org/wiki/${title}`;
+    }
+
+    function card(row){
+      const title = col(row,'title')||'(untitled)';
+      const genres = String(col(row,'genre')||'').split(/\s*\|\s*|,\s*/).filter(Boolean);
+      const rating = Number(col(row,'rating')) || null;
+      const rc = col(row,'rating_count');
+      const mins = col(row,'duration_minutes');
+      const cert = col(row,'content_rating');
+      const url = col(row,'url');
+      const wiki = wikiHref(row);
+      const img = col(row,'image');
+      const rank = row._rank;
+      const director = col(row, 'director');
+
+      const key = getNoteKey(row);
+      const note = readNote(key);
+      const meLabel = $('#meName').value || SETTINGS.meName || 'R Dawg';
+      const ptLabel = $('#ptName').value || SETTINGS.ptName || 'K Dawg';
+
+      function pillClass(){
+        const w = (note.me.watched?1:0)+(note.pt.watched?1:0);
+        if(w===0) return 'pill bad'; if(w===1) return 'pill warn'; return 'pill ok';
+      }
+
+      const el = document.createElement('div');
+      el.className = 'card';
+      el.innerHTML = `
+        ${img?`<img class=\"thumb\" alt=\"\" src=\"${img}\">`:`<div class=\"thumb\"></div>`}
+        <div class=\"card-body\">
+          <div class=\"split\">
+            <div class=\"title\">${title}</div>
+            <span class=\"badge\">#${rank}</span>
+          </div>
+          <div class=\"badges\">
+            ${director?`<span class=\"badge\">Dir: ${director}</span>`:''}
+            ${genres.map(g=>`<span class=\"badge\">${g}</span>`).join('')}
+            ${cert?`<span class=\"badge\">${cert}</span>`:''}
+            ${mins?`<span class=\"badge\">${mins}m</span>`:''}
+            ${rating?`<span class=\"badge\">★ ${rating}</span>`:''}
+            ${rc?`<span class=\"badge\">${Number(rc).toLocaleString()} votes</span>`:''}
+          </div>
+          <div class=\"muted\">${col(row,'description')||''}</div>
+
+          <div class=\"section stack\">
+            <div class=\"field\"><label>${meLabel} watched</label><div class=\"watch-toggle\"><input type=\"checkbox\" ${note.me.watched?'checked':''} data-role=\"me-watch\"></div></div>
+            <div class=\"field\"><label>${ptLabel} watched</label><div class=\"watch-toggle\"><input type=\"checkbox\" ${note.pt.watched?'checked':''} data-role=\"pt-watch\"></div></div>
+            <div class=\"field\"><label>${meLabel} rating (0–10)</label><input type=\"number\" min=\"0\" max=\"10\" step=\"0.5\" value=\"${note.me.rating||''}\" data-role=\"me-rating\"></div>
+            <div class=\"field\"><label>${ptLabel} rating (0–10)</label><input type=\"number\" min=\"0\" max=\"10\" step=\"0.5\" value=\"${note.pt.rating||''}\" data-role=\"pt-rating\"></div>
+            <div class=\"field\"><label>Watched on (date)</label><input type=\"date\" value=\"${note.watchedOn||''}\" data-role=\"watched-on\"></div>
+            <div class=\"field\"><label>Platform</label>
+              <select data-role=\"platform\">\n                <option value=\"\">— Select —</option>\n                ${PLATFORMS.map(p=>`<option ${note.platform===p?'selected':''} value=\"${p}\">${p}</option>`).join('')}\n              </select>
+            </div>
+          </div>
+
+          <div class=\"section stack-1\">\n            <div class=\"field\"><label>${meLabel} review</label><textarea placeholder=\"R Dawg's thoughts...\" data-role=\"me-review\">${note.me.review||''}</textarea></div>\n            <div class=\"field\"><label>${ptLabel} review</label><textarea placeholder=\"K Dawg's thoughts...\" data-role=\"pt-review\">${note.pt.review||''}</textarea></div>\n          </div>
+        </div>
+        <div class=\"footer\">
+          <span class=\"${pillClass()}\">${note.me.watched||note.pt.watched? 'Watched' : 'Not watched'}</span>
+          <div class=\"controls\">\n            ${url?`<a href=\"${url}\" target=\"_blank\"><button>IMDb</button></a>`:''}\n            ${wiki?`<a href=\"${wiki}\" target=\"_blank\"><button>Wikipedia</button></a>`:''}\n            <button data-role=\"clear\">Clear</button>\n          </div>
+        </div>`;
+
+      // Wire events
+      const save = ()=>{
+        const n = {
+          me:{
+            watched: el.querySelector('[data-role="me-watch"]').checked,
+            rating: el.querySelector('[data-role="me-rating"]').value,
+            review: el.querySelector('[data-role="me-review"]').value,
+          },
+          pt:{
+            watched: el.querySelector('[data-role="pt-watch"]').checked,
+            rating: el.querySelector('[data-role="pt-rating"]').value,
+            review: el.querySelector('[data-role="pt-review"]').value,
+          },
+          platform: el.querySelector('[data-role="platform"]').value,
+          watchedOn: el.querySelector('[data-role="watched-on"]').value,
+          updatedAt: new Date().toISOString()
+        };
+        writeNote(key,n);
+        // Update footer pill
+        el.querySelector('.pill').className = ((n.me.watched?1:0)+(n.pt.watched?1:0))===0 ? 'pill bad' : ((n.me.watched?1:0)+(n.pt.watched?1:0))===1 ? 'pill warn' : 'pill ok';
+        el.querySelector('.pill').textContent = (n.me.watched||n.pt.watched) ? 'Watched' : 'Not watched';
+      };
+
+      el.addEventListener('change', e=>{ if(e.target.matches('[data-role]')) save(); });
+      el.querySelector('[data-role="clear"]').addEventListener('click', ()=>{
+        writeNote(key, { me:{watched:false,rating:"",review:""}, pt:{watched:false,rating:"",review:""}, platform:"", watchedOn:"", updatedAt:null });
+        render();
+      });
+      return el;
+    }
+
+    function render(){
+      const container = $('#list');
+      container.innerHTML = '';
+      $('#activeFilters').textContent = activeFilterText();
+      const rows = sortRows(applyFilters(DATA));
+      $('#resultMeta').textContent = `${rows.length} / ${DATA.length||0} movies`;
+      $('#empty').hidden = DATA.length>0;
+      rows.forEach(r => container.appendChild(card(r)));
+    }
+
+    /*************************
+     * Event Listeners
+     *************************/
+    $('#btnLoadCsv').addEventListener('click', ()=> $('#csvFile').click());
+    $('#csvFile').addEventListener('change', ev => {
+      const file = ev.target.files?.[0]; if(!file) return;
+      file.text().then(loadDataFromCSV);
+    });
+
+    $('#btnSample').addEventListener('click', ()=> { loadDataFromCSV(sampleCSV); renderQuote(); });
+
+    $('#btnExport').addEventListener('click', ()=>{
+      const blob = new Blob([JSON.stringify({ notes:NOTES, settings:{ meName:$('#meName').value||SETTINGS.meName, ptName:$('#ptName').value||SETTINGS.ptName } }, null, 2)], {type:'application/json'});
+      const a = Object.assign(document.createElement('a'), { href:URL.createObjectURL(blob), download:'movie-notes.json' });
+      a.click();
+    });
+
+    $('#btnImport').addEventListener('click', ()=> $('#jsonFile').click());
+    $('#jsonFile').addEventListener('change', ev=>{
+      const f = ev.target.files?.[0]; if(!f) return;
+      f.text().then(txt=>{
+        try{
+          const obj = JSON.parse(txt);
+          if(obj.notes) NOTES = obj.notes;
+          if(obj.settings){ SETTINGS = {...SETTINGS, ...obj.settings}; $('#meName').value = SETTINGS.meName; $('#ptName').value = SETTINGS.ptName; }
+          saveLocal(STORAGE_NOTES, NOTES); saveLocal(STORAGE_SETTINGS, SETTINGS);
+          render();
+        }catch(e){ alert('Invalid JSON'); }
+      })
+    });
+
+    $('#btnReset').addEventListener('click', ()=>{
+      $('#q').value = '';
+      $$('#genre option').forEach(o=>o.selected=false);
+      $$('#cert option').forEach(o=>o.selected=false);
+      $('#minRating').value = 0; $('#minRatingOut').textContent = '0';
+      $('#maxMins').value = '';
+      $('#unwatchedOnly').checked = false;
+      $('#sortBy').value = 'title'; $('#sortDir').value='asc';
+      render();
+    });
+
+    // Filter inputs
+    $('#q').addEventListener('input', render);
+    $('#genre').addEventListener('change', render);
+    $('#cert').addEventListener('change', render);
+    $('#minRating').addEventListener('input', e=>{ $('#minRatingOut').textContent = e.target.value; render(); });
+    $('#maxMins').addEventListener('input', render);
+    $('#unwatchedOnly').addEventListener('change', render);
+    $('#sortBy').addEventListener('change', render);
+    $('#sortDir').addEventListener('change', render);
+    $('#meName').addEventListener('input', ()=>{ SETTINGS.meName = $('#meName').value; saveLocal(STORAGE_SETTINGS, SETTINGS); render(); });
+    $('#ptName').addEventListener('input', ()=>{ SETTINGS.ptName = $('#ptName').value; saveLocal(STORAGE_SETTINGS, SETTINGS); render(); });
+;
+
+    // Initialize
+    $('#meName').value = SETTINGS.meName || 'R Dawg';
+    $('#ptName').value = SETTINGS.ptName || 'K Dawg';
+    $('#minRatingOut').textContent = $('#minRating').value;
+    renderQuote();
+    render();
+  </script>
+</body>
+</html>
