@@ -3440,3 +3440,15 @@ section#three ul.labeled-icons li a {
 	list-style: disc outside;
 	margin: .25rem
   
+
+/* Featured: keep bullets inside so they don't overlap the left column */
+#featured .featured-steps{
+	list-style: disc inside;   /* was: disc outside */
+	margin: .25rem 0 0 0;
+	padding-left: .25rem;      /* tiny breathing room so text doesn’t touch dot */
+  }
+  #featured .featured-steps li{
+	white-space: nowrap;       /* keep them one line each as you wanted */
+	margin: 0 0 .4rem;
+  }
+  
